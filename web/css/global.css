@@ -21,10 +21,16 @@ a {
     margin: 30px 180px 30px 180px;
 }
 
-#forms {
-    position: relative;
-    text-align: center;
-    margin-left: 40%;
+.formtable {
+    position: center;
+    margin-left: 10%;
+    padding: 20px;
+    margin-top: 20px;
+    width: 70%;
+    height: auto;
+    border: solid 1px #AAA;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #FFFFFF;
 }
 
 /* --------------------------- Header ---------------------------------- */
