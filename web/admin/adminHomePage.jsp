@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-    <%@ include file="userHeader.html"%>
+    <%@ include file="../user/userHeader.html"%>
 </header>
 
 <main>
@@ -29,7 +29,7 @@
 </main>
 
 <footer>
-    <%@ include file="userFooter.html"%>
+    <%@ include file="../user/userFooter.html"%>
 </footer>
 </body>
 </html>

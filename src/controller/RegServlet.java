@@ -23,6 +23,7 @@ public class RegServlet extends HttpServlet {
         user.setEmail(email);
         user.setPassword(password);
         user.setUserStatus("on");
+        user.setAdminStatus(0);
         user.addUser();
 
         // Redirect to login page

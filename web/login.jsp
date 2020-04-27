@@ -11,7 +11,7 @@
 <body>
 <%@ include file="/globalHeader.html" %>
 
-<form method="post" name="LoginUserForm" onsubmit="return checkLogin();" action="/LoginServlet">
+<form method="post" name="LoginUserForm" onsubmit="return checkLogin();" action="${pageContext.request.contextPath}/LoginServlet">
     <h1>Connect to your account!</h1>
     <h3>Login</h3>
     <!-- If the user has just registered, a message of validation is displayed -->

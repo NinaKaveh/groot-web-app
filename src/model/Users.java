@@ -98,6 +98,15 @@ public class Users {
             prepStat.setString(1,email);
             prepStat.setString(2,password);
 
+            ResultSet resultSet = prepStat.executeQuery();
+            while (resultSet.next()){
+                setId(resultSet.getInt(1));                     // 1st column in DB
+                setPseudo(resultSet.getString(2));              // 2th column in DB
+                setPassword(resultSet.getString(3));            // 3th column in DB
+                setEmail(resultSet.getString(4));               // 4th column in DB
+                setAdminStatus(resultSet.getInt(7));            // 7th column in DB
+            }
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

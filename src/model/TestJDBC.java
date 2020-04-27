@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.DriverManager;
+import java.sql.*;
 
 public class TestJDBC {
 
