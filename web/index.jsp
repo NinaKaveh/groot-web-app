@@ -34,11 +34,11 @@
         <table>
             <tr>
                 <td>Want to sign up?</td>
-                <td><a href="#" class="btn btn-primary" style="background-color: #111e84;">Login</a></td>
+                <td><a href="login.jsp" class="btn btn-primary" style="background-color: #111e84;">Login</a></td>
             </tr>
             <tr>
                 <td>Want to register?</td>
-                <td><a href="#" class="btn btn-primary" style="background-color: #111e84;">Register</a></td>
+                <td><a href="register.jsp" class="btn btn-primary" style="background-color: #111e84;">Register</a></td>
             </tr>
         </table>
     </section>
