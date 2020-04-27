@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 
             request.setAttribute("name", user.getPseudo());
             if (user.getAdminStatus()!=1){
-                request.getRequestDispatcher("user/userHomePage.jsp").forward(request, response);
+                request.getRequestDispatcher("welcome.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("admin/adminHomePage.jsp").forward(request, response);
             }

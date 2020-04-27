@@ -23,7 +23,7 @@
 
 <div class="row">
     <section id="welcome">
-        <h1>Hi @User!</h1>
+        <h1>Hi ${name}!</h1>
         <h3>Welcome on your homepage</h3>
     </section>
 </div>
