@@ -14,7 +14,9 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="css/global.css"/>
+    <script type="text/javascript" src="js/formValidation.js"></script>
 </head>
+
 <body>
 <%@ include file="/globalHeader.html" %>
 
@@ -31,24 +33,20 @@
 
             <tbody>
             <tr>
-                <th scope="row">Pseudo</th>
-                <td><input type="text" name="pseudo"></td>
-                <td id="pseudoerror"></td>
-            </tr>
-            <tr>
                 <th scope="row">Email</th>
                 <td><input type="text" name="email"></td>
-                <td id="emailerror"></td>
+            </tr>
+            <tr>
+                <th scope="row">Pseudo</th>
+                <td><input type="text" name="pseudo"></td>
             </tr>
             <tr>
                 <th scope="row">Password</th>
                 <td><input type="password" name="password"></td>
-                <td id="passerror"></td>
             </tr>
             <tr>
                 <th scope="row">Confirm Password</th>
                 <td><input type="password" name="password2"></td>
-                <td id="passerror2"></td>
             </tr>
             <tr>
                 <th scope="row"></th>

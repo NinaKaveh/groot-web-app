@@ -28,17 +28,14 @@
             <tr>
                 <th scope="row">Email</th>
                 <td><input type="text" name="email"></td>
-                <td id="emailerror"></td>
             </tr>
             <tr>
                 <th scope="row">Password</th>
                 <td><input type="password" name="password"></td>
-                <td id="passerror"></td>
             </tr>
             <tr>
                 <th scope="row"></th>
                 <td><input type="submit" class="btn btn-primary" style="background-color: #111e84;" value="Login"></td>
-                <td></td>
             </tr>
             </tbody>
         </table>
