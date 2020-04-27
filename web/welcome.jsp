@@ -32,7 +32,7 @@
     <div class="col-8" style="padding: 0px 10px 0px 36px;">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Latests publication</li>
+                <li class="breadcrumb-item active" aria-current="page">Latests publications</li>
             </ol>
         </nav>
 
