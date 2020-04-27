@@ -23,19 +23,18 @@
 
 <div class="row">
     <section id="welcome">
-        <h1>Contact us!</h1>
-        <h3>We are here to anwser you</h3>
-        <p>Please fullfill the bellow form to contact us, we will answer you as soon as possible.</p>
+        <h1>Hi @User!</h1>
+        <h3>Welcome on your homepage</h3>
     </section>
 </div>
 
 <div class="row">
-    <div class="col">
+    <div class="col-7">
+        <h3>Latest publications:</h3>
     </div>
-    <div class="col-6">
-
-    </div>
-    <div class="col">
+    <div class="col-3">
+    <h3>My score</h3>
+        <h3>Events calendar:</h3>
     </div>
 </div>
 
