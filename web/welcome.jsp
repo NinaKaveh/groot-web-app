@@ -29,12 +29,37 @@
 </div>
 
 <div class="row">
-    <div class="col-7">
-        <h3>Latest publications:</h3>
+    <div class="col-8" style="padding: 0px 10px 0px 36px;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Latests publication</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col">
+               <h5>A wonderful party at ISEP</h5>
+                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was popularised...</p>
+                <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
+            </div>
+            <div class="col">
+                <h5>Sunset in Paris</h5>
+                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was popularised...</p>
+                <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
+            </div>
+            <div class="col">
+                <h5>Jardisep plants</h5>
+                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was popularised...</p>
+                <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
+            </div>
+            <div class="col-2">
+                <a href="#" class="btn btn-primary" style="background-color: #111e84;">See more articles...</a>
+            </div>
+        </div>
     </div>
     <div class="col-3">
-    <h3>My score</h3>
-        <h3>Events calendar:</h3>
+    <h4>My score</h4>
+        <h4>Events calendar:</h4>
     </div>
 </div>
 
