@@ -24,6 +24,7 @@
 
 <div class="row" style="margin-top:40px;margin-left: 10px">
     <div class="col-11" style="padding: 0px 10px 0px 36px;">
+        <a href="addarticle.jsp" class="btn btn-warning" style="float: right" >Write an article</a>
         <h3 style="margin-bottom: 30px;">Latests publications</h3>
 
         <div class="row" style="border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px">
