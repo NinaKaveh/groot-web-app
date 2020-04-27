@@ -36,7 +36,7 @@
         <form>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@isep.fr">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Student or teacher ?</label>
@@ -51,7 +51,7 @@
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">I agree to the application's terms of use. Click here to read them.</label>
+                <label class="form-check-label" for="exampleCheck1">I agree to the application's terms of use. <a href="termsofuse.jsp">Click here to read them.</a></label>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
