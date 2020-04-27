@@ -57,9 +57,11 @@
             </div>
         </div>
     </div>
-    <div class="col-3">
-    <h4>My score</h4>
-        <h4>Events calendar:</h4>
+    <div class="col-4">
+        <button type="button" class="btn btn-light" style="background-color:#e0effd; width: 85%">
+            My score: <span class="badge badge-success">4 points</span>
+        </button>
+        <h5 style="margin-top:50px;">Events calendar:</h5>
     </div>
 </div>
 
