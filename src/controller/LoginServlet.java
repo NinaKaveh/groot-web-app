@@ -21,8 +21,14 @@ public class LoginServlet extends HttpServlet {
         // Checking if the user exists
         if (user!=null && user.getEmail()!=null && user.getPassword()!=null){
             // Create user session
-            HttpSession session=request.getSession();
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
 
+            // Create cookies
+            String id = String.valueOf(user.getId());
+            Cookie logCookie = new Cookie ("id",id);
+            logCookie.setMaxAge(45*60);       // 45 minutes
+            response.addCookie(logCookie);
 
             request.setAttribute("name", user.getPseudo());
             if (user.getAdminStatus()!=1){
