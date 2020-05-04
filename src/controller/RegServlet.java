@@ -1,5 +1,6 @@
 package controller;
 
+import model.Security;
 import model.Users;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,10 @@ public class RegServlet extends HttpServlet {
         // Add user to database
         user.setPseudo(pseudo);
         user.setEmail(email);
-        user.setPassword(password);
+        // hash the password
+        Security security = new Security();
+        String hashedPass = security.hashPassword(password);
+        user.setPassword(hashedPass);
         user.setUserStatus("on");
         user.setAdminStatus(0);
         user.addUser();

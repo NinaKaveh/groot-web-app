@@ -1,5 +1,6 @@
 package controller;
 
+import model.Security;
 import model.TestJDBC;
 import model.Users;
 
@@ -16,7 +17,10 @@ public class LoginServlet extends HttpServlet {
         String email=request.getParameter("email");
         String password=request.getParameter("password");
         Users user = new Users();
-        user.getUser(email, password);
+        //hash the password
+        Security security = new Security();
+        String hashedPass = security.hashPassword(password);
+        user.getUser(email, hashedPass);
 
         // Checking if the user exists
         if (user!=null && user.getEmail()!=null && user.getPassword()!=null){

@@ -71,16 +71,16 @@ public class Users {
         try {
             // Establish connection
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3308/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String url = "jdbc:mysql://localhost:3306/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             java.sql.Connection connection = DriverManager.getConnection(url, "root", "");
 
             // Use of prepared statement to avoid security breach
             PreparedStatement prepStat = connection.prepareStatement("INSERT INTO users VALUES (NULL,?,?,?,0,?,0)");
             prepStat.setString(1,getPseudo());
-            // hash the password (TO DO)
             prepStat.setString(2,getPassword());
             prepStat.setString(3,getEmail());
             prepStat.setString(4,getUserStatus());
+            System.out.println(this);
             prepStat.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -91,7 +91,7 @@ public class Users {
     public void getUser(String email, String password){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3308/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String url = "jdbc:mysql://localhost:3306/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             java.sql.Connection connection = DriverManager.getConnection(url, "root", "");
 
             PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM users WHERE email=? AND password=?");
@@ -100,11 +100,12 @@ public class Users {
 
             ResultSet resultSet = prepStat.executeQuery();
             while (resultSet.next()){
-                setId(resultSet.getInt(1));                     // 1st column in DB
-                setPseudo(resultSet.getString(2));              // 2th column in DB
-                setPassword(resultSet.getString(3));            // 3th column in DB
-                setEmail(resultSet.getString(4));               // 4th column in DB
-                setAdminStatus(resultSet.getInt(7));            // 7th column in DB
+                setId(resultSet.getInt(1));                     // 1st column in table
+                setPseudo(resultSet.getString(2));              // 2th column in table
+                setPassword(resultSet.getString(3));            // 3th column in table
+                setEmail(resultSet.getString(4));               // 4th column in table
+                setEmail(resultSet.getString(5));               // 5th column in table
+                setAdminStatus(resultSet.getInt(7));            // 7th column in table
             }
 
         } catch (SQLException | ClassNotFoundException e) {
@@ -113,4 +114,16 @@ public class Users {
     }
 
 
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", pseudo='" + pseudo + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", score=" + score +
+                ", userStatus='" + userStatus + '\'' +
+                ", adminStatus=" + adminStatus +
+                '}';
+    }
 }
