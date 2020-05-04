@@ -70,9 +70,7 @@ public class Users {
     public void addUser(){
         try {
             // Establish connection
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            java.sql.Connection connection = DriverManager.getConnection(url, "root", "");
+            java.sql.Connection connection = TestJDBC.connectDB();
 
             // Use of prepared statement to avoid security breach
             PreparedStatement prepStat = connection.prepareStatement("INSERT INTO users VALUES (NULL,?,?,?,0,?,0)");
@@ -82,7 +80,7 @@ public class Users {
             prepStat.setString(4,getUserStatus());
             System.out.println(this);
             prepStat.executeUpdate();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -90,9 +88,8 @@ public class Users {
 
     public void getUser(String email, String password){
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            java.sql.Connection connection = DriverManager.getConnection(url, "root", "");
+            // Establish connection
+            java.sql.Connection connection = TestJDBC.connectDB();
 
             PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM users WHERE email=? AND password=?");
             prepStat.setString(1,email);
@@ -108,7 +105,7 @@ public class Users {
                 setAdminStatus(resultSet.getInt(7));            // 7th column in table
             }
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

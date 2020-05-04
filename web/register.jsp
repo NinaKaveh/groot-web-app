@@ -23,7 +23,7 @@
 <section class="formtable">
     <h1>Create your account and join us!</h1>
     <h3>Register form</h3>
-    <form method="post" name="RegUserForm" onclick="return checkRegister();"
+    <form method="post" name="RegUserForm" onsubmit="return checkRegister();"
           action="${pageContext.request.contextPath}/RegServlet">
         <table class="table table-borderless">
 
@@ -33,12 +33,12 @@
 
             <tbody>
             <tr>
-                <th scope="row">Email</th>
-                <td><input type="text" name="email"></td>
-            </tr>
-            <tr>
                 <th scope="row">Pseudo</th>
                 <td><input type="text" name="pseudo"></td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td><input type="text" name="email"></td>
             </tr>
             <tr>
                 <th scope="row">Password</th>

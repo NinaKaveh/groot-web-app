@@ -21,8 +21,7 @@
         <table class="table table-borderless">
 
             <!-- If the user has just registered, a message of validation is displayed -->
-            <p style="color: brown;">${message}</p>
-            <div id="error"></div>
+            <p style="color: green;">${message}</p>
 
             <tbody>
             <tr>
