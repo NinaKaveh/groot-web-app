@@ -70,7 +70,7 @@ public class Users {
     public void addUser(){
         try {
             // Establish connection
-            java.sql.Connection connection = TestJDBC.connectDB();
+            java.sql.Connection connection = ConnectJDBC.connectDB();
 
             // Use of prepared statement to avoid security breach
             PreparedStatement prepStat = connection.prepareStatement("INSERT INTO users VALUES (NULL,?,?,?,0,?,0)");
@@ -89,7 +89,7 @@ public class Users {
     public void getUser(String email, String password){
         try {
             // Establish connection
-            java.sql.Connection connection = TestJDBC.connectDB();
+            java.sql.Connection connection = ConnectJDBC.connectDB();
 
             PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM users WHERE email=? AND password=?");
             prepStat.setString(1,email);

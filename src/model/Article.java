@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Article {
     private int id;
-    private String date;
+    private Date date;
     private String title;
     private String content;
     private int authorId;
@@ -14,11 +14,11 @@ public class Article {
         return id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -63,7 +63,7 @@ public class Article {
 
             // Use of prepared statement to avoid security breach
             PreparedStatement prepStat = connection.prepareStatement("INSERT INTO articles VALUES (NULL,?,?,?,?,0)");
-            prepStat.setString(1, getDate());
+            prepStat.setDate(1, getDate());
             prepStat.setString(2, getTitle());
             prepStat.setString(3, getContent());
             prepStat.setInt(4, getAuthorId());

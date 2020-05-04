@@ -31,7 +31,7 @@
             <div class="col-8">
 
 
-                <form method="post" name="addArticleForm" action="${pageContext.request.contextPath}/addArticleServlet">
+                <form method="post" name="AddArticleForm" action="${pageContext.request.contextPath}/AddArticleServlet">
                     <p style="color: green;">${message}</p>
                     <div id="error"></div>
                     <div class="form-group">

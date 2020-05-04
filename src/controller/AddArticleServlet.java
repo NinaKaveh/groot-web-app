@@ -8,26 +8,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 @WebServlet(name = "/AddArticleServlet")
-public class addArticleServlet extends HttpServlet {
+public class AddArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve data from the register form
+        // Retrieve data from the addarticle form
         String title = request.getParameter("title");
         String content = request.getParameter("content");
-        Article article = new Article();
+
+        //retrieve date
+        DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println(format.format(date));
 
         // Add user to database
+        Article article = new Article();
+
+        article.setDate((java.sql.Date) date);
         article.setTitle(title);
         article.setContent(content);
 
-        // add userid
+        // add authorId
         article.setAuthorId(123);
         article.setAdminApproverId(0);
 
+        //send values to db
         article.addArticle();
 
-        // Redirect to login page
+        // Redirect to addarticle page
         request.setAttribute("message", "Your article has been added successfully to Groot, it will be reviewed by an admin first, and then published");
         request.getRequestDispatcher("addarticle.jsp").forward(request, response);
 
