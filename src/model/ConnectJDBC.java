@@ -2,7 +2,7 @@ package model;
 
 import java.sql.*;
 
-public class TestJDBC {
+public class ConnectJDBC {
 
 /*
     public static void main(String[] args) {
