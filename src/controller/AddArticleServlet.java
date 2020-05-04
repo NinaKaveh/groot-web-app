@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 
 @WebServlet(name = "/AddArticleServlet")
 public class AddArticleServlet extends HttpServlet {
@@ -19,15 +20,9 @@ public class AddArticleServlet extends HttpServlet {
         String title = request.getParameter("title");
         String content = request.getParameter("content");
 
-        //retrieve date
-        DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        System.out.println(format.format(date));
-
         // Add user to database
         Article article = new Article();
 
-        article.setDate((java.sql.Date) date);
         article.setTitle(title);
         article.setContent(content);
 

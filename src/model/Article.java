@@ -1,10 +1,10 @@
 package model;
 
 import java.sql.*;
+import java.util.Date;
 
 public class Article {
     private int id;
-    private Date date;
     private String title;
     private String content;
     private int authorId;
@@ -12,14 +12,6 @@ public class Article {
 
     public int getId() {
         return id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getTitle() {
@@ -62,11 +54,10 @@ public class Article {
             Connection connection = DriverManager.getConnection(url, "root", "root");
 
             // Use of prepared statement to avoid security breach
-            PreparedStatement prepStat = connection.prepareStatement("INSERT INTO articles VALUES (NULL,?,?,?,?,0)");
-            prepStat.setDate(1, getDate());
-            prepStat.setString(2, getTitle());
-            prepStat.setString(3, getContent());
-            prepStat.setInt(4, getAuthorId());
+            PreparedStatement prepStat = connection.prepareStatement("INSERT INTO articles VALUES (NULL,CURDATE(),?,?,?,0)");
+            prepStat.setString(1, getTitle());
+            prepStat.setString(2, getContent());
+            prepStat.setInt(3, getAuthorId());
             System.out.println(this);
             prepStat.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
@@ -105,7 +96,6 @@ public class Article {
     public String toString() {
         return "Articles{" +
                 "id=" + id +
-                ", date='" + date + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", author=" + authorId +
