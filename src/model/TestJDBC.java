@@ -14,9 +14,10 @@ public class TestJDBC {
 
         java.sql.Connection connection = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("DRIVER OK ! ");
             String userName = "root";
-            String password = "";
+            String password = "root";
             String url = "jdbc:mysql://localhost:3306/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             connection = DriverManager.getConnection(url, userName, password);
         } catch (Exception e) {

@@ -32,4 +32,14 @@
         <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>/AddArticleServlet</servlet-name>
+        <servlet-class>controller.AddArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>/AddArticleServlet</servlet-name>
+        <url-pattern>/AddArticleServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

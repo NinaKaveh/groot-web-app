@@ -29,21 +29,27 @@
             <div class="col">
             </div>
             <div class="col-8">
-                <form>
+
+
+                <form method="post" name="addArticleForm" action="${pageContext.request.contextPath}/addArticleServlet">
+                    <p style="color: green;">${message}</p>
+                    <div id="error"></div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Title</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" >
+                        <label for="input1">Title</label>
+                        <input type="text" class="form-control" id="input1" name="title">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Content</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                        <label for="input2">Content</label>
+                        <textarea class="form-control" id="input2" name="content" rows="10"></textarea>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">I agree to the application's terms of use. <a style="color:#333" href="termsofuse.jsp">Click here to read them.</a></label>
+                        <input type="checkbox" class="form-check-input" id="input3" required>
+                        <label class="form-check-label"  for="input3" name="checkBox">I agree to the application's terms of use. <a style="color:#333" href="termsofuse.jsp">Click here to read them.</a></label>
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
                 </form>
+
+
             </div>
             <div class="col">
             </div>
