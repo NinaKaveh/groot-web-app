@@ -21,29 +21,29 @@ function checkRegister() {
     var password2 = document.forms["RegUserForm"]["password2"];
 
 
-    if (pseudo == "") {
+    if (pseudo.value == "") {
         window.alert("You must create a pseudo");
         pseudo.focus();
         return false;
     }
-    if (email == "") {
+    if (email.value == "") {
         window.alert("You must create an email");
         email.focus();
         return false;
     }
 
-    if (password == "") {
+    if (password.value == "") {
         window.alert("You must create a password");
         password.focus();
         return false;
     }
-    if (password2 == "") {
+    if (password2.value == "") {
         window.alert("You must confirm password");
         password2.focus();
         return false;
     }
 
-    if (password == password2) {
+    if (password.value == password2.value) {
         window.alert("Passwords are different");
         password2.focus();
         return false;
