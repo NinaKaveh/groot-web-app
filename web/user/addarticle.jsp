@@ -15,7 +15,7 @@
 
 <!-- INCLUDE HEADER -->
 <header>
-    <%@ include file="/globalHeaderLogged.html" %>
+    <%@ include file="/user/globalHeaderLogged.jsp" %>
 </header>
 <!-- END OF INCLUDE HEADER -->
 
@@ -62,5 +62,5 @@
 
 
 <!-- INCLUDE FOOTER -->
-<%@ include file="/user/globalFooterLogged.html.html" %>
+<%@ include file="/user/globalFooterLogged.html" %>
 <!-- DO NOT WRITE HERE -->
