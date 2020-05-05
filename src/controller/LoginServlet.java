@@ -22,17 +22,27 @@ public class LoginServlet extends HttpServlet {
 
         // Checking if the user exists
         if (user!=null && user.getEmail()!=null && user.getPassword()!=null){
-            // Create user session
-            HttpSession session = request.getSession();
+
+            //remove old session if exists
+            HttpSession formerSession = request.getSession(false);
+            if ( formerSession != null) formerSession.invalidate();
+
+            //generate a new session // Create user session
+            HttpSession session = request.getSession(true);
             session.setAttribute("user", user);
+            session.setMaxInactiveInterval(20*60);          //if the user is inactive during 20min
 
             // Create cookies
-            String id = String.valueOf(user.getId());
-            Cookie logCookie = new Cookie ("id",id);
-            logCookie.setMaxAge(45*60);       // 45 minutes
-            response.addCookie(logCookie);
+            Cookie id = new Cookie ("id",String.valueOf(user.getId()));
+            Cookie pseudo = new Cookie("pseudo", user.getPseudo());
+            Cookie mail = new Cookie("mail", user.getEmail());
+            Cookie score = new Cookie("score", String.valueOf(user.getScore()));
+            response.addCookie(id);
+            response.addCookie(pseudo);
+            response.addCookie(mail);
+            response.addCookie(score);
 
-            request.setAttribute("name", user.getPseudo());
+
             if (user.getAdminStatus()!=1){
                 request.getRequestDispatcher("welcome.jsp").forward(request, response);
             } else {
@@ -44,40 +54,6 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 
-        /*
-        Statement statement;
-        ResultSet resultSet = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3308/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            java.sql.Connection connection = DriverManager.getConnection(url, "root", "");
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT email,password FROM users WHERE email = '"+email+"'");
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            while (resultSet.next()) {
-                String login = resultSet.getString(4).trim();
-                String id = resultSet.getString(1).trim();
-                String pw = resultSet.getString(3).trim();
-                System.out.println(login +" " + pw);
-                System.out.println(email +" " +password);
-                if (email.equals(login) && password.equals(pw)) {
-                    Cookie loginCookie = new Cookie ("id", id);
-                    loginCookie.setMaxAge(30*60);
-                    response.addCookie(loginCookie);
-                    response.sendRedirect("user/userHomePage.jsp");
-                } else {
-                    // redirect to login page with error
-                }
-                break;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-*/
     }
 
 }

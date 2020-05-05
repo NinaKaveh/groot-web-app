@@ -6,16 +6,15 @@
     <meta charset="UTF-8">
     <title>Welcome on your account | Groot</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/global.css"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="js/includeHeaderFooter.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="img/logo-groot.png">
+    <link rel="icon" type="image/png" href="../img/logo-groot.png">
 </head>
 
 <!-- INCLUDE HEADER -->
 <header>
-    <%@ include file="/globalHeaderLogged.html" %>
+    <%@ include file="/user/globalHeaderLogged.jsp" %>
 </header>
 <!-- END OF INCLUDE HEADER -->
 
@@ -69,5 +68,5 @@
 
 
 <!-- INCLUDE FOOTER -->
-<%@ include file="/globalFooterLogged.html" %>
+<%@ include file="/user/globalFooterLogged.html" %>
 <!-- DO NOT WRITE HERE -->
