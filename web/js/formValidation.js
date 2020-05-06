@@ -43,7 +43,7 @@ function checkRegister() {
         return false;
     }
 
-    if (password.value == password2.value) {
+    if (password.value != password2.value) {
         window.alert("Passwords are different");
         password2.focus();
         return false;

@@ -49,9 +49,7 @@ public class Article {
     public void addArticle() {
         try {
             // Establish connection
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            Connection connection = DriverManager.getConnection(url, "root", "root");
+            java.sql.Connection connection = ConnectJDBC.connectDB();
 
             // Use of prepared statement to avoid security breach
             PreparedStatement prepStat = connection.prepareStatement("INSERT INTO articles VALUES (NULL,CURDATE(),?,?,?,0)");
@@ -60,7 +58,7 @@ public class Article {
             prepStat.setInt(3, getAuthorId());
             System.out.println(this);
             prepStat.executeUpdate();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

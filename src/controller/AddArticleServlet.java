@@ -35,7 +35,7 @@ public class AddArticleServlet extends HttpServlet {
 
         // Redirect to addarticle page
         request.setAttribute("message", "Your article has been added successfully to Groot, it will be reviewed by an admin first, and then published");
-        request.getRequestDispatcher("addarticle.jsp").forward(request, response);
+        request.getRequestDispatcher("user/addarticle.jsp").forward(request, response);
 
     }
 

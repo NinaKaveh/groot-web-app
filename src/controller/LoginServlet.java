@@ -32,16 +32,6 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", user);
             session.setMaxInactiveInterval(20*60);          //if the user is inactive during 20min
 
-            // Create cookies
-            Cookie id = new Cookie ("id",String.valueOf(user.getId()));
-            Cookie pseudo = new Cookie("pseudo", user.getPseudo());
-            Cookie mail = new Cookie("mail", user.getEmail());
-            Cookie score = new Cookie("score", String.valueOf(user.getScore()));
-            response.addCookie(id);
-            response.addCookie(pseudo);
-            response.addCookie(mail);
-            response.addCookie(score);
-
             request.getSession().setAttribute("session", true);
             if (user.getAdminStatus()!=1){
                 response.sendRedirect(request.getContextPath() + "user/welcome.jsp");
