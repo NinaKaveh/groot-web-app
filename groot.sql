@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 06 mai 2020 à 17:18
+-- Généré le :  mer. 06 mai 2020 à 17:54
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
@@ -35,17 +35,18 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `title` varchar(200) NOT NULL,
   `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `authorId` int(10) NOT NULL,
-  `adminApproverId` int(10) NOT NULL,
+  `isPublished` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `articles`
 --
 
-INSERT INTO `articles` (`id`, `date`, `title`, `content`, `authorId`, `adminApproverId`) VALUES
-(3, '2020-05-06', 'First article', 'zezez', 123, 0),
-(2, '2020-05-06', 'First article', 'Bonjour', 123, 0);
+INSERT INTO `articles` (`id`, `date`, `title`, `content`, `authorId`, `isPublished`) VALUES
+(1, '2020-05-06', 'First article', 'Bonjour', 2, 1),
+(2, '2020-05-06', 'First article', 'azerty', 2, 0),
+(3, '2020-05-06', 'Second article', 'Test !!!!', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `dateStartTime` date NOT NULL,
   `dateEndTime` date NOT NULL,
-  `adminApproverId` int(10) NOT NULL,
+  `isPublished` tinyint(1) NOT NULL DEFAULT '0',
   `authorId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -69,17 +70,17 @@ CREATE TABLE IF NOT EXISTS `events` (
 -- Déchargement des données de la table `events`
 --
 
-INSERT INTO `events` (`id`, `title`, `description`, `dateStartTime`, `dateEndTime`, `adminApproverId`, `authorId`) VALUES
-(1, 'marche pour le climat', 'révolution !!!!!!', '2020-08-12', '2020-08-15', 0, 31);
+INSERT INTO `events` (`id`, `title`, `description`, `dateStartTime`, `dateEndTime`, `isPublished`, `authorId`) VALUES
+(1, 'marche pour le climat', 'révolution !!!!!!', '2020-08-12', '2020-08-15', 1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `historiqueactions`
+-- Structure de la table `history`
 --
 
-DROP TABLE IF EXISTS `historiqueactions`;
-CREATE TABLE IF NOT EXISTS `historiqueactions` (
+DROP TABLE IF EXISTS `history`;
+CREATE TABLE IF NOT EXISTS `history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(10) NOT NULL,
   `type` varchar(60) NOT NULL,
@@ -103,15 +104,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userStatus` varchar(20) COLLATE utf8_bin NOT NULL,
   `adminStatus` int(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `password`, `email`, `score`, `userStatus`, `adminStatus`) VALUES
-(8, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@groot.com', 0, 'on', 1),					/* mdp = admin */
-(31, 'KANI', '0a5b3913cbc9a9092311630e869b4442', 'kaveh.n@hotmail.fr', 20, 'on', 0);				/* mdp = aze */
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@groot.com', 0, 'on', 1),
+(2, 'KANI', '0a5b3913cbc9a9092311630e869b4442', 'kaveh.n@hotmail.fr', 15, 'on', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

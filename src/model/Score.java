@@ -15,7 +15,7 @@ public class Score {
             java.sql.Connection connection = ConnectJDBC.connectDB();
 
             // get the total number of articles for a user given
-            PreparedStatement prepStatArticle = connection.prepareStatement("SELECT count(id) FROM articles WHERE authorId=?");
+            PreparedStatement prepStatArticle = connection.prepareStatement("SELECT count(id) FROM articles WHERE authorId=? AND isPublished=1");
             prepStatArticle.setInt(1, user.getId());
 
             // set the user score
@@ -26,7 +26,7 @@ public class Score {
 
 
             // get the total number of events for a user given
-            PreparedStatement prepStatEvent = connection.prepareStatement("SELECT count(id) FROM events WHERE authorId=?");
+            PreparedStatement prepStatEvent = connection.prepareStatement("SELECT count(id) FROM events WHERE authorId=? AND isPublished=1");
             prepStatEvent.setInt(1, user.getId());
 
             // set the user score

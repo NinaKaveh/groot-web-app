@@ -26,7 +26,7 @@
             <tbody>
             <tr>
                 <th scope="row">Email</th>
-                <td><input type="text" name="email"></td>
+                <td><input type="email" name="email"></td>
             </tr>
             <tr>
                 <th scope="row">Password</th>

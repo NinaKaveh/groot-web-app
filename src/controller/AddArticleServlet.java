@@ -38,8 +38,6 @@ public class AddArticleServlet extends HttpServlet {
         //send values to db
         article.addArticle();
 
-
-        Score.addPoints(user);
         session.setAttribute("user", user);
 
         // Redirect to addarticle page
