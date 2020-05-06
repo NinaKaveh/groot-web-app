@@ -24,11 +24,11 @@ public class LoginServlet extends HttpServlet {
         if (user!=null && user.getEmail()!=null && user.getPassword()!=null){
 
             //remove old session if exists
-            HttpSession formerSession = request.getSession(false);
-            if ( formerSession != null) formerSession.invalidate();
+            HttpSession session = request.getSession();
+            if (session != null) session.invalidate();
 
-            //generate a new session // Create user session
-            HttpSession session = request.getSession(true);
+            // Create user session
+            session = request.getSession(true);
             session.setAttribute("user", user);
             session.setMaxInactiveInterval(20*60);          //if the user is inactive during 20min
 
@@ -42,14 +42,15 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(mail);
             response.addCookie(score);
 
-
+            request.getSession().setAttribute("session", true);
             if (user.getAdminStatus()!=1){
-                request.getRequestDispatcher("welcome.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "user/welcome.jsp");
             } else {
-                request.getRequestDispatcher("admin/adminHomePage.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "admin/adminHomePage.jsp");
             }
         } else {
             // Redirect to login page
+            request.getSession().setAttribute("session", false);
             request.setAttribute("message", "User not found ! Invalid email or password.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

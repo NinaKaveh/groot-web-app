@@ -18,12 +18,11 @@ public class Security {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
 
             md5.update(password.getBytes());        //Add password bytes to digest
-            byte[] bytes = md5.digest();                        //Get the hash's bytes
+            byte[] hashBytes = md5.digest();                        //Get the hash's bytes
             StringBuilder stringBuild = new StringBuilder();            //Convert it to hexadecimal format
 
-            for (byte aByte : bytes) {
-                stringBuild.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
-            }
+            for (byte aByte : hashBytes) stringBuild.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
+
             hashedPass = stringBuild.toString();                    //hashed password in hexadecimal
 
         } catch (Exception e) {

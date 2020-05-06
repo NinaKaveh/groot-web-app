@@ -15,7 +15,7 @@
     <div class="col-4">
         <div class="formtable" style="margin-top: 5%">
             <label>My score:</label>
-            <span class="badge badge-success" style="font-size: 1em">4 points</span>
+            <span class="badge badge-success" style="font-size: 1em">${user.getScore()} points</span>
         </div>
         <br><br><br><br>
         <div style="margin-left: 3%">

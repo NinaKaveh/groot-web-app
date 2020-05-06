@@ -101,7 +101,7 @@ public class Users {
                 setPseudo(resultSet.getString(2));              // 2th column in table
                 setPassword(resultSet.getString(3));            // 3th column in table
                 setEmail(resultSet.getString(4));               // 4th column in table
-                setEmail(resultSet.getString(5));               // 5th column in table
+                setScore(resultSet.getInt(5));                  // 5th column in table
                 setAdminStatus(resultSet.getInt(7));            // 7th column in table
             }
 

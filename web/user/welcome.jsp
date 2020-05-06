@@ -22,7 +22,7 @@
 
 <div class="row">
     <section id="welcome">
-        <h1>Hi ${name}!</h1>
+        <h1>Hi ${user.getPseudo()}!</h1>
         <h3>Welcome on your homepage</h3>
     </section>
 </div>
@@ -58,7 +58,7 @@
     </div>
     <div class="col-4">
         <button type="button" class="btn btn-light" style="background-color:#e0effd; width: 85%">
-            My score: <span class="badge badge-success">4 points</span>
+            My score: <span class="badge badge-success">${user.getScore()} points</span>
         </button>
         <h5 style="margin-top:50px;">Events calendar:</h5>
     </div>

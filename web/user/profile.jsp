@@ -17,9 +17,10 @@
     </div>
     <div class="col-8">
         <h2>Your personal information :</h2>
-        <p>Pseudo : <%=pseudo%></p>
-        <p>Email : <%=email%></p>
-        <p>Score : <%=score%></p>
+        <p>Id : ${user.getId()}</p>
+        <p>Pseudo : ${user.getPseudo()}</p>
+        <p>Email : ${user.getEmail()}</p>
+        <p>Score : ${user.getScore()}</p>
     </div>
 </div>
 
