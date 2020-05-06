@@ -1,5 +1,6 @@
 /* --------------------------- Global ---------------------------------- */
 body{
+    height: 100%;
     font-family: "Optima", sans-serif;
     right: 0;
 
@@ -31,6 +32,10 @@ a {
     border: solid 1px #AAA;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #FFFFFF;
+}
+
+.row {
+    margin-right: 0;
 }
 
 /* --------------------------- Header ---------------------------------- */

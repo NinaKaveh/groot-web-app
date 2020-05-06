@@ -23,7 +23,7 @@
 <div class="row">
     <section id="welcome">
         <h1>Contact us!</h1>
-        <h3>We are here to anwser you</h3>
+        <h3>We are here to answer you</h3>
         <p>Please fullfill the bellow form to contact us, we will answer you as soon as possible.</p>
     </section>
 </div>
