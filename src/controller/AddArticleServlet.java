@@ -1,12 +1,15 @@
 package controller;
 
 import model.Article;
+import model.Score;
+import model.Users;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.text.DateFormat;
@@ -20,18 +23,24 @@ public class AddArticleServlet extends HttpServlet {
         String title = request.getParameter("title");
         String content = request.getParameter("content");
 
-        // Add user to database
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("user");
+
         Article article = new Article();
 
         article.setTitle(title);
         article.setContent(content);
 
         // add authorId
-        article.setAuthorId(123);
+        article.setAuthorId(user.getId());
         article.setAdminApproverId(0);
 
         //send values to db
         article.addArticle();
+
+
+        Score.addPoints(user);
+        session.setAttribute("user", user);
 
         // Redirect to addarticle page
         request.setAttribute("message", "Your article has been added successfully to Groot, it will be reviewed by an admin first, and then published");

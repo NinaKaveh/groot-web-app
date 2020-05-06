@@ -1,5 +1,6 @@
 package controller;
 
+import model.Score;
 import model.Security;
 import model.Users;
 
@@ -26,6 +27,9 @@ public class LoginServlet extends HttpServlet {
             //remove old session if exists
             HttpSession session = request.getSession();
             if (session != null) session.invalidate();
+
+            // Update user score
+            Score.addPoints(user);
 
             // Create user session
             session = request.getSession(true);
