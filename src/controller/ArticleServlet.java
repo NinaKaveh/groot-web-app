@@ -1,7 +1,6 @@
 package controller;
 
 import model.Article;
-import model.ConnectJDBC;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +22,7 @@ public class ArticleServlet extends HttpServlet {
         try
         {
             Article article = new Article();
+            article.getAllArticles();
             article.getAllArticles();
             out.println(article);
 
