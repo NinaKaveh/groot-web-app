@@ -23,7 +23,6 @@ public class ArticleServlet extends HttpServlet {
         {
             Article article = new Article();
             article.getAllArticles();
-            article.getAllArticles();
             out.println(article);
 
         } catch (Exception e) {
