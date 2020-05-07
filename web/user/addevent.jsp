@@ -28,25 +28,33 @@
             <div class="col">
             </div>
             <div class="col-8">
-                <form>
+                <form method="post" name="AddEventForm" action="${pageContext.request.contextPath}/AddEventServlet">
+                    <p style="color: green;">${message}</p>
+                    <div id="error"></div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Title</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" >
+                        <label for="input1">Title</label>
+                        <input type="text" class="form-control" id="input1" name="title">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Date</label>
-                        <input type="datetime-local" class="form-control" id="exampleFormControlInput1" >
+                        <label for="input2">Date start</label>
+                        <input type="datetime-local" class="form-control" name="datestartform" id="input2" >
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <label for="input5">Date end</label>
+                        <input type="datetime-local" class="form-control" name="dateendform" id="input5" >
+                    </div>
+                    <div class="form-group">
+                        <label for="input3">Description</label>
+                        <textarea class="form-control" id="input3" name="content" rows="5"></textarea>
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">I agree to the application's terms of use. <a style="color:#333" href="../termsofuse.jsp">Click here to read them.</a></label>
+                        <input type="checkbox" class="form-check-input" id="input4" required>
+                        <label class="form-check-label"  for="input4" name="checkBox">I agree to the application's terms of use. <a style="color:#333" href="../termsofuse.jsp">Click here to read them.</a></label>
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
                 </form>
+
+
             </div>
             <div class="col">
             </div>
