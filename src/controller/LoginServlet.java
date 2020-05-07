@@ -38,9 +38,9 @@ public class LoginServlet extends HttpServlet {
 
             request.getSession().setAttribute("session", true);
             if (user.getAdminStatus()!=1){
-                response.sendRedirect(request.getContextPath() + "user/welcome.jsp");
+                response.sendRedirect(request.getContextPath() + "/user/welcome.jsp");
             } else {
-                response.sendRedirect(request.getContextPath() + "admin/adminHomePage.jsp");
+                response.sendRedirect(request.getContextPath() + "/admin/adminHomePage.jsp");
             }
         } else {
             // Redirect to login page

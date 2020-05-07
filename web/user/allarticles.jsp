@@ -20,6 +20,7 @@
 
 <body>
 
+<c:redirect url="ArticleServlet?action=doGet" />
 
 <div class="row" style="margin-top:40px;margin-left: 10px">
     <div class="col-11" style="padding: 0px 10px 0px 36px;">
@@ -42,6 +43,8 @@
     </div>
 
 </div>
+
+
 
 </body>
 

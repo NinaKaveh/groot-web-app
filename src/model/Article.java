@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.*;
-import java.util.Date;
 
 public class Article {
     private int id;
@@ -9,9 +8,15 @@ public class Article {
     private String content;
     private int authorId;
     private int adminApproverId;
+    private Date dateart;
 
     public int getId() {
         return id;
+    }
+
+    public Date setDate(Date datearticle){
+        this.dateart=datearticle;
+        return dateart;
     }
 
     public String getTitle() {
@@ -58,37 +63,32 @@ public class Article {
             prepStat.setInt(3, getAuthorId());
             System.out.println(this);
             prepStat.executeUpdate();
+        }  catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void getAllArticles() {
+        try {
+            // Establish connection
+            java.sql.Connection connection = ConnectJDBC.connectDB();
+
+            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM articles ORDER by id DESC");
+
+            ResultSet resultSet = prepStat.executeQuery();
+            while (resultSet.next()) {
+                setDate(resultSet.getDate(2));              // 2th column in table
+                setTitle(resultSet.getString(3));            // 3th column in table
+                setContent(resultSet.getString(4));               // 4th column in table
+                setAuthorId(resultSet.getInt(5));               // 5th column in table
+                setAdminApproverId(resultSet.getInt(6));               // 6th column in table
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-/*
-    public void getArticle(String email, String password) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/groot?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            Connection connection = DriverManager.getConnection(url, "root", "");
-
-            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM users WHERE email=? AND password=?");
-            prepStat.setString(1, email);
-            prepStat.setString(2, password);
-
-            ResultSet resultSet = prepStat.executeQuery();
-            while (resultSet.next()) {
-                setId(resultSet.getInt(1));                     // 1st column in table
-                setPseudo(resultSet.getString(2));              // 2th column in table
-                setPassword(resultSet.getString(3));            // 3th column in table
-                setEmail(resultSet.getString(4));               // 4th column in table
-                setEmail(resultSet.getString(5));               // 5th column in table
-                setAdminStatus(resultSet.getInt(7));            // 7th column in table
-            }
-
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-*/
 
     @Override
     public String toString() {

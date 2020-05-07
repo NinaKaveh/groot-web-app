@@ -50,4 +50,13 @@
         <url-pattern>/AddArticleServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>/ArticleServlet</servlet-name>
+        <servlet-class>controller.ArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>/ArticleServlet</servlet-name>
+        <url-pattern>/ArticleServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
