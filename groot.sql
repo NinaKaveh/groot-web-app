@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 06 mai 2020 à 17:54
+-- Généré le :  jeu. 07 mai 2020 à 13:37
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
@@ -59,19 +59,20 @@ CREATE TABLE IF NOT EXISTS `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `dateStartTime` date NOT NULL,
-  `dateEndTime` date NOT NULL,
+  `dateStartTime` varchar(100) NOT NULL,
+  `dateEndTime` varchar(100) NOT NULL,
   `isPublished` tinyint(1) NOT NULL DEFAULT '0',
   `authorId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `events`
 --
 
 INSERT INTO `events` (`id`, `title`, `description`, `dateStartTime`, `dateEndTime`, `isPublished`, `authorId`) VALUES
-(1, 'marche pour le climat', 'révolution !!!!!!', '2020-08-12', '2020-08-15', 1, 2);
+(1, 'marche pour le climat', 'révolution !!!!!!', '2020-08-12', '2020-08-15', 1, 2),
+(3, 'Another event', 'Blabla, hello', '2022-11-11T22:22', '2033-12-12T23:23', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -104,15 +105,25 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userStatus` varchar(20) COLLATE utf8_bin NOT NULL,
   `adminStatus` int(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `password`, `email`, `score`, `userStatus`, `adminStatus`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@groot.com', 0, 'on', 1),
-(2, 'KANI', '0a5b3913cbc9a9092311630e869b4442', 'kaveh.n@hotmail.fr', 15, 'on', 0);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@groot.com', 0, 'on', 1),					/*mdp=admin*/
+(2, 'KANI', '0a5b3913cbc9a9092311630e869b4442', 'kaveh.n@hotmail.fr', 15, 'on', 0),					/*mdp=aze*/
+(4, 'user-1', '202cb962ac59075b964b07152d234b70', 'user1@isep.fr', 0, 'on', 0),						/*mdp=123*/
+(5, 'user-2', '202cb962ac59075b964b07152d234b70', 'user2@isep.fr', 100, 'on', 0),
+(6, 'user-3', '202cb962ac59075b964b07152d234b70', 'user3@isep.fr', 10, 'on', 0),
+(7, 'user-4', '202cb962ac59075b964b07152d234b70', 'user4@isep.fr', 70, 'on', 0),
+(8, 'user-5', '202cb962ac59075b964b07152d234b70', 'user5@isep.fr', 55, 'on', 0),
+(9, 'user-6', '202cb962ac59075b964b07152d234b70', 'user6@isep.fr', 5, 'on', 0),
+(10, 'user-7', '202cb962ac59075b964b07152d234b70', 'user7@isep.fr', 20, 'on', 0),
+(11, 'user-8', '202cb962ac59075b964b07152d234b70', 'user8@isep.fr', 150, 'on', 0),
+(12, 'user-9', '202cb962ac59075b964b07152d234b70', 'user9@isep.fr', 75, 'on', 0),
+(13, 'user-10', '202cb962ac59075b964b07152d234b70', 'user10@isep.fr', 0, 'on', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
