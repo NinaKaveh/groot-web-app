@@ -1,3 +1,6 @@
+<%@ page import="model.Score" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,8 +15,12 @@
 
 <body>
 <%@ include file="/user/globalHeaderLogged.jsp" %>
+<% Score.createPodium();%>
+<%Set<Map.Entry<String, Integer>> entrySet = Score.PODIUM.entrySet();%>
 
-<div class="row">
+<div id="score" class="row" style="margin-left:3%; margin-top:3%;">
+    <h1>This is the podium page !</h1>
+    <h2>You will find here the top 10 most active users of the Groot platform.</h2>
     <div class="col-4">
         <div class="formtable" style="margin-top: 5%">
             <label>My score:</label>
@@ -39,55 +46,15 @@
             </thead>
             <tbody>
             <tr>
-                <th scope="row">1</th>
-                <td>name</td>
-                <td>xxx</td>
+            <%
+                int increment = 1;
+                for (Map.Entry<String, Integer> rank : entrySet) {
+            %>
+                <th scope="row"><%=increment%></th>
+                <td><%=rank.getKey()%></td>
+                <td><%=rank.getValue()%></td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <th scope="row">6</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <th scope="row">7</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <th scope="row">8</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <th scope="row">9</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
-            <tr>
-                <th scope="row">10</th>
-                <td>name</td>
-                <td>xxx</td>
-            </tr>
+            <% increment+=1; } %>
             </tbody>
         </table>
 
