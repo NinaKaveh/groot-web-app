@@ -29,6 +29,10 @@ public class Article {
         this.dateart=datearticle;
         return dateart;
     }
+    public Date getDate() {
+        return dateart;
+    }
+
 
     public String getTitle() {
         return title;
@@ -73,6 +77,10 @@ public class Article {
                 '}';
     }
     public String toHTMLString(){
-        return "<div id=\"" +this.getId() + "\">" + this.getTitle() + "</div>";
+        return "<div class='row' style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
+                "<h5>" + this.getTitle() + "</h5>" +
+                "<p style='font-size: 12px; margin-left: 20px; margin-bottom:50px;'>" + "<i>Published on: " + this.getDate() + " by " + this.getAuthorId() +"</i></p>" + "<br/><br/>"+
+                "<p style='text-align: justify'>" + this.getContent() + "</p>" + "</div>";
+
     }
 }

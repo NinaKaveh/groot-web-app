@@ -25,6 +25,7 @@ public class ArticleServlet extends HttpServlet {
             provider.getAll();
             out.println(provider.toHtmlString());
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
