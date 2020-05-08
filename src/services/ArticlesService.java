@@ -40,6 +40,7 @@ public class ArticlesService {
     }
 
     public ArrayList<Article> getAll(){
+        allArticles.clear();
         if(this.allArticles.size() == 0){
             this.fetchAll();
         }
@@ -70,7 +71,7 @@ public class ArticlesService {
         }
     }
 
-    public String toJSONString() {
+    /*public String toJSONString() {
         String stringifiedJSON = "[";
         int articlesCount = allArticles.size();
         for(int itr = 0; itr < articlesCount ; ++itr){
@@ -81,7 +82,7 @@ public class ArticlesService {
         }
         stringifiedJSON += "]";
         return stringifiedJSON;
-    }
+    }*/
 
     public String toHtmlString() {
         String htmlString = "";
@@ -89,7 +90,6 @@ public class ArticlesService {
         for(int itr = 0; itr < articlesCount ; ++itr){
             htmlString += allArticles.get(itr).toHTMLString();
         }
-        htmlString += "";
         return htmlString;
     }
 }
