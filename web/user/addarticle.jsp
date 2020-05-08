@@ -33,6 +33,7 @@
 
                 <form method="post" name="AddArticleForm" action="${pageContext.request.contextPath}/AddArticleServlet">
                     <p style="color: green;">${message}</p>
+
                     <div id="error"></div>
                     <div class="form-group">
                         <label for="input1">Title</label>

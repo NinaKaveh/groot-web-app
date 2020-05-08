@@ -20,12 +20,9 @@ public class ArticleServlet extends HttpServlet {
         res.setContentType("text/html");
 
         ArticlesService provider = ArticlesService.getInstance();
-        try
-        {
+        try {
             provider.getAll();
             out.println(provider.toHtmlString());
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
