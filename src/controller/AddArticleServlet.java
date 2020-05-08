@@ -1,8 +1,8 @@
 package controller;
 
 import model.Article;
-import model.Score;
 import model.Users;
+import services.ArticlesService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,10 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.sql.Timestamp;
 
 @WebServlet(name = "/AddArticleServlet")
 public class AddArticleServlet extends HttpServlet {
@@ -36,7 +32,7 @@ public class AddArticleServlet extends HttpServlet {
         article.setAdminApproverId(0);
 
         //send values to db
-        article.addArticle();
+        ArticlesService.getInstance().addArticle(article);
 
         session.setAttribute("user", user);
 

@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class Article {
     private int idart;
@@ -11,7 +10,6 @@ public class Article {
     private int adminApproverId;
     private Date dateart;
     private int count;
-    private ArrayList<String> ligne=new ArrayList<String>();
 
     public int getId() {
         return idart;
@@ -64,64 +62,17 @@ public class Article {
         this.adminApproverId = adminApproverId;
     }
 
-    public void addArticle() {
-        try {
-            // Establish connection
-            java.sql.Connection connection = ConnectJDBC.connectDB();
 
-            // Use of prepared statement to avoid security breach
-            PreparedStatement prepStat = connection.prepareStatement("INSERT INTO articles VALUES (NULL,CURDATE(),?,?,?,0)");
-            prepStat.setString(1, getTitle());
-            prepStat.setString(2, getContent());
-            prepStat.setInt(3, getAuthorId());
-            System.out.println(this);
-            prepStat.executeUpdate();
-        }  catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public void getAllArticles() {
-        try {
-            // Establish connection
-            Connection connection = ConnectJDBC.connectDB();
-
-            //Recuperation articles
-            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM articles ORDER by id DESC");
-            ResultSet resultSet = prepStat.executeQuery();
-
-            while (resultSet.next()) {
-                setId(resultSet.getInt(1)); //1st column
-                setDate(resultSet.getDate(2));              // 2th column in table
-                setTitle(resultSet.getString(3));            // 3th column in table
-                setContent(resultSet.getString(4));               // 4th column in table
-                setAuthorId(resultSet.getInt(5));               // 5th column in table
-                setAdminApproverId(resultSet.getInt(6));               // 6th column in table
-                ligne.add(String.valueOf(idart));
-                ligne.add(String.valueOf(dateart));
-                ligne.add(String.valueOf(title));
-                ligne.add(String.valueOf(content));
-                ligne.add(String.valueOf(authorId));
-                ligne.add(String.valueOf(adminApproverId));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "Articles{" +
-                "id=" + idart +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", author=" + authorId +
-                ", admin approval='" + adminApproverId + '\'' +
+    public String toJsonString() {
+        return "{" +
+                "\"id\":" + idart + ',' +
+                "\"title\":" + title + ',' +
+                "\"content\":" + content  + ',' +
+                "\"authorId\":" + authorId  + ',' +
+                "\"adminApproval\":" + adminApproverId +
                 '}';
     }
-    public ArrayList<String> toList() {
-        return(ligne);
+    public String toHTMLString(){
+        return "<div id=\"" +this.getId() + "\">" + this.getTitle() + "</div>";
     }
 }

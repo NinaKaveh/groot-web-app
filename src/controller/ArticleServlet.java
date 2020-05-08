@@ -1,6 +1,6 @@
 package controller;
 
-import model.Article;
+import services.ArticlesService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,12 +18,12 @@ public class ArticleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         PrintWriter out = res.getWriter();
         res.setContentType("text/html");
-        out.println("<html><body>");
+
+        ArticlesService provider = ArticlesService.getInstance();
         try
         {
-            Article article = new Article();
-            article.getAllArticles();
-            out.println(article);
+            provider.getAll();
+            out.println(provider.toHtmlString());
 
         } catch (Exception e) {
             e.printStackTrace();
