@@ -67,6 +67,5 @@
         <servlet-name>/AddEventServlet</servlet-name>
         <url-pattern>/AddEventServlet</url-pattern>
     </servlet-mapping>
-    <url-pattern></url-pattern>
 
 </web-app>
