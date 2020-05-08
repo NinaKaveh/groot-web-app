@@ -23,19 +23,19 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active" style="margin-right:10px">
-                    <a class="nav-link" href="/groot_web_app_war_exploded/user/welcome.jsp">My Homepage</a>
+                    <a class="nav-link" href="/user/welcome.jsp">My Homepage</a>
                 </li>
                 <li class="nav-item" style="margin-right:10px">
-                    <a class="nav-link" href="/groot_web_app_war_exploded/user/profile.jsp">Profile</a>
+                    <a class="nav-link" href="/user/profile.jsp">Profile</a>
                 </li>
                 <li class="nav-item" style="margin-right:10px">
-                    <a class="nav-link" href="/groot_web_app_war_exploded/user/allarticles.jsp">Articles</a>
+                    <a class="nav-link" href="/user/allarticles.jsp">Articles</a>
                 </li>
                 <li class="nav-item" style="margin-right:10px">
-                    <a class="nav-link" href="/groot_web_app_war_exploded/user/allevents.jsp">Events</a>
+                    <a class="nav-link" href="/user/allevents.jsp">Events</a>
                 </li>
                 <li class="nav-item" style="margin-right:10px">
-                    <a class="nav-link" href="/groot_web_app_war_exploded/user/score.jsp">Scores</a>
+                    <a class="nav-link" href="/user/score.jsp">Scores</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/LogoutServlet"
