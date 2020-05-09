@@ -67,12 +67,11 @@ public class Users {
         this.adminStatus = adminStatus;
     }
 
+    // User registration
     public void addUser(){
         try {
-            // Establish connection
             java.sql.Connection connection = ConnectJDBC.connectDB();
 
-            // Use of prepared statement to avoid security breach
             PreparedStatement prepStat = connection.prepareStatement("INSERT INTO users VALUES (NULL,?,?,?,0,?,0)");
             prepStat.setString(1,getPseudo());
             prepStat.setString(2,getPassword());
@@ -85,10 +84,9 @@ public class Users {
         }
     }
 
-
+    // User connection
     public void getUser(String email, String password){
         try {
-            // Establish connection
             java.sql.Connection connection = ConnectJDBC.connectDB();
 
             PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM users WHERE email=? AND password=?");

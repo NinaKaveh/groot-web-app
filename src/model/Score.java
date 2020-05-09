@@ -65,4 +65,24 @@ public class Score {
         }
     }
 
+    public Users getUserScore(String userPseudo){
+        Users searchUser = new Users();
+        try {
+            java.sql.Connection connection = ConnectJDBC.connectDB();
+
+            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM users WHERE pseudo=?");
+            prepStat.setString(1,userPseudo);
+
+            ResultSet resultSet = prepStat.executeQuery();
+            while (resultSet.next()){
+                searchUser.setPseudo(resultSet.getString(2));
+                searchUser.setScore(resultSet.getInt(5));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return searchUser;
+    }
+
+
 }

@@ -67,6 +67,14 @@
         <servlet-name>/AddEventServlet</servlet-name>
         <url-pattern>/AddEventServlet</url-pattern>
     </servlet-mapping>
-    <url-pattern></url-pattern>
+
+    <servlet>
+        <servlet-name>/ScoreServlet</servlet-name>
+        <servlet-class>controller.ScoreServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>/ScoreServlet</servlet-name>
+        <url-pattern>/ScoreServlet</url-pattern>
+    </servlet-mapping>
 
 </web-app>
