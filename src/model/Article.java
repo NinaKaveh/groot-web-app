@@ -77,10 +77,11 @@ public class Article {
                 '}';
     }
     public String toHTMLString(){
-        return "<div class='row' style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
-                "<h5>" + this.getTitle() + "</h5>" +
-                "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " + this.getAuthorId() +"</i></p>" +
-                "<p style='text-align: justify'>" + this.getContent() + "</p>" + "</div>";
+    return "<div style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
+            "<section><h5>" + this.getTitle() + "</h5>" +
+            "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " +
+            this.getAuthorId() +"</i></p><hr></section>" +
+            "<section>" + this.getContent() + "</section>" + "</div>";
 
     }
 }

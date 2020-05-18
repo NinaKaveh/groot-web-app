@@ -86,12 +86,12 @@ public class ArticlesService {
             ResultSet resultSet = prepStat.executeQuery();
             while (resultSet.next()) {
                 Article article = new Article();
-                article.setId(resultSet.getInt(1)); //1st column
-                article.setDate(resultSet.getDate(2));              // 2th column in table
-                article.setTitle(resultSet.getString(3));            // 3th column in table
-                article.setContent(resultSet.getString(4));               // 4th column in table
-                article.setAuthorId(resultSet.getInt(5));               // 5th column in table
-                article.setAdminApproverId(resultSet.getInt(6));               // 6th column in table
+                article.setId(resultSet.getInt(1));
+                article.setDate(resultSet.getDate(2));
+                article.setTitle(resultSet.getString(3));
+                article.setContent(resultSet.getString(4));
+                article.setAuthorId(resultSet.getInt(5));
+                article.setAdminApproverId(resultSet.getInt(6));
                 allArticles.add(article);
             }
 
@@ -116,8 +116,8 @@ public class ArticlesService {
     public String toHtmlString() {
         String htmlString = "";
         int articlesCount = allArticles.size();
-        for (int itr = 0; itr < articlesCount; ++itr) {
-            htmlString += allArticles.get(itr).toHTMLString();
+        for (Article allArticle : allArticles) {
+            htmlString += allArticle.toHTMLString();
         }
         return htmlString;
     }
