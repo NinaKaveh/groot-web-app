@@ -61,7 +61,7 @@ public class ArticlesService {
                 article.setTitle(resultSet.getString(3));
                 article.setContent(resultSet.getString(4));
                 article.setAuthorId(resultSet.getInt(5));
-                article.setAdminApproverId(resultSet.getInt(6));
+                article.setPublicationStatus(resultSet.getInt(6));
                 allArticles.add(article);
             }
 
@@ -91,7 +91,7 @@ public class ArticlesService {
                 article.setTitle(resultSet.getString(3));
                 article.setContent(resultSet.getString(4));
                 article.setAuthorId(resultSet.getInt(5));
-                article.setAdminApproverId(resultSet.getInt(6));
+                article.setPublicationStatus(resultSet.getInt(6));
                 allArticles.add(article);
             }
 

@@ -26,9 +26,6 @@
                     <a class="nav-link" href="../admin/adminHomePage.jsp">My Homepage</a>
                 </li>
                 <li class="nav-item" style="margin-right:10px">
-                    <a class="nav-link" href="../admin/profile.jsp">Profile</a>
-                </li>
-                <li class="nav-item" style="margin-right:10px">
                     <a class="nav-link" href="../admin/allarticles.jsp">Articles</a>
                 </li>
                 <li class="nav-item" style="margin-right:10px">

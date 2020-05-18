@@ -44,6 +44,7 @@
                     <div class="form-group">
                         <label for="input2">Content</label>
                         <textarea class="form-control" id="input2" name="content" rows="10"></textarea>
+                        <!-- Banner to add style to content-->
                         <script>
                             ClassicEditor
                                 .create( document.querySelector( '#input2' ), {

@@ -23,24 +23,13 @@ public class ArticleServlet extends HttpServlet {
         Users user = (Users) req.getSession().getAttribute("user");
         ArticlesService provider = ArticlesService.getInstance();
 
-        if (user.getAdminStatus()==1){      // get only unpublished articles
-            try {
-                provider.AdminGetAll();
-                out.println(provider.toHtmlString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                provider.getAll();
-                out.println(provider.toHtmlString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
+        try {
+            provider.getAll();
+            out.println(provider.toHtmlString());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
 
 
     }
