@@ -1,5 +1,6 @@
 package controller;
 
+import model.Users;
 import services.ArticlesService;
 
 import javax.servlet.ServletException;
@@ -19,13 +20,27 @@ public class ArticleServlet extends HttpServlet {
         PrintWriter out = res.getWriter();
         res.setContentType("text/html");
 
+        Users user = (Users) req.getSession().getAttribute("user");
         ArticlesService provider = ArticlesService.getInstance();
-        try {
-            provider.getAll();
-            out.println(provider.toHtmlString());
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        if (user.getAdminStatus()==1){      // get only unpublished articles
+            try {
+                provider.AdminGetAll();
+                out.println(provider.toHtmlString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                provider.getAll();
+                out.println(provider.toHtmlString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
+
+
 
 
     }
