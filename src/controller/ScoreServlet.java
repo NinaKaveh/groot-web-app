@@ -23,19 +23,11 @@ public class ScoreServlet extends HttpServlet {
 
         request.setAttribute("searchPseudo", searchUser.getPseudo());
         request.setAttribute("searchScore", searchUser.getScore());
-        request.getRequestDispatcher("/user/score.jsp").forward(request, response);
-
-        /*
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<script>" +
-                "$('searchUser').after('Pseudo : '"+searchUser.getPseudo()+ ");" +
-                "$('searchUser').after('Score : '"+searchUser.getScore()+ ");" +
-                "</script>");
-        request.getRequestDispatcher("/user/score.jsp").include(request, response);
-        out.close();
-         */
-
+        if (user.getAdminStatus()==1){
+            request.getRequestDispatcher("/admin/score.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("/user/score.jsp").forward(request, response);
+        }
     }
 
 }
