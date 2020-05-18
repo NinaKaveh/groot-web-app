@@ -17,13 +17,22 @@
 </header>
 
 <main>
-    <h1>Hi ${name}</h1>
-
-    <section id="latestArticles">
-        <h3>Latest activity :</h3>
-        <br><br><br>
+    <section id="welcome">
+        <h1>Hi ${user.getPseudo()}!</h1>
+        <h3>Welcome on your homepage</h3>
     </section>
 
+    <c:redirect url="ArticleServlet?action=doGet" />
+
+    <div class="row" style="margin-top:40px;margin-left: 10px">
+        <div style="padding: 0px 10px 0px 36px;">
+            <h3 style="margin-bottom: 30px;">Latests articles created :</h3>
+
+            <jsp:include page="/ArticleServlet" />
+            <c:out value="${message}"></c:out>
+        </div>
+
+    </div>
 </main>
 
 <footer>

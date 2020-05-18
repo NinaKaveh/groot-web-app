@@ -10,12 +10,11 @@ public class ArticlesService {
     private ArrayList<Article> allArticles = new ArrayList<Article>();
     private static ArticlesService INSTANCE = null;
 
-    private ArticlesService()
-    {}
+    private ArticlesService() {
+    }
 
 
-    public static ArticlesService getInstance()
-    {
+    public static ArticlesService getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new ArticlesService();
         }
@@ -34,14 +33,14 @@ public class ArticlesService {
             prepStat.setInt(3, article.getAuthorId());
             System.out.println(this);
             prepStat.executeUpdate();
-        }  catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Article> getAll(){
+    public ArrayList<Article> getAll() {
         allArticles.clear();
-        if(this.allArticles.size() == 0){
+        if (this.allArticles.size() == 0) {
             this.fetchAll();
         }
         return this.allArticles;
@@ -54,6 +53,36 @@ public class ArticlesService {
 
             //Recuperation articles
             PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM articles ORDER by id DESC");
+            ResultSet resultSet = prepStat.executeQuery();
+            while (resultSet.next()) {
+                Article article = new Article();
+                article.setId(resultSet.getInt(1));
+                article.setDate(resultSet.getDate(2));
+                article.setTitle(resultSet.getString(3));
+                article.setContent(resultSet.getString(4));
+                article.setAuthorId(resultSet.getInt(5));
+                article.setAdminApproverId(resultSet.getInt(6));
+                allArticles.add(article);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Article> AdminGetAll() {
+        allArticles.clear();
+        if (this.allArticles.size() == 0) {
+            this.AdminfetchAll();
+        }
+        return this.allArticles;
+    }
+
+    public void AdminfetchAll() {
+        try {
+            Connection connection = ConnectJDBC.connectDB();
+
+            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM articles WHERE isPublished=0 ORDER by date DESC");
             ResultSet resultSet = prepStat.executeQuery();
             while (resultSet.next()) {
                 Article article = new Article();
@@ -87,7 +116,7 @@ public class ArticlesService {
     public String toHtmlString() {
         String htmlString = "";
         int articlesCount = allArticles.size();
-        for(int itr = 0; itr < articlesCount ; ++itr){
+        for (int itr = 0; itr < articlesCount; ++itr) {
             htmlString += allArticles.get(itr).toHTMLString();
         }
         return htmlString;
