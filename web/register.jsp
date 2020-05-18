@@ -19,11 +19,6 @@
     <form method="post" name="RegUserForm" onsubmit="return checkRegister();"
           action="${pageContext.request.contextPath}/RegServlet">
         <table class="table table-borderless">
-
-            <!-- If the user has just registered, a message of validation is displayed -->
-            <p style="color: brown;">${message}</p>
-            <div id="error"></div>
-
             <tbody>
             <tr>
                 <th scope="row">Pseudo</th>
