@@ -60,6 +60,15 @@
     </servlet-mapping>
 
     <servlet>
+    <servlet-name>/AdminArticleServlet</servlet-name>
+    <servlet-class>controller.AdminArticleServlet</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>/AdminArticleServlet</servlet-name>
+        <url-pattern>/AdminArticleServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>/AddEventServlet</servlet-name>
         <servlet-class>controller.AddEventServlet</servlet-class>
     </servlet>

@@ -7,13 +7,14 @@ public class Article {
     private String title;
     private String content;
     private int authorId;
-    private int adminApproverId;
+    private int publicationStatus;
     private Date dateart;
     private int count;
 
     public int getId() {
         return idart;
     }
+
     public void setId(int id) {
         this.idart = id;
     }
@@ -21,14 +22,16 @@ public class Article {
     public int getCount() {
         return count;
     }
+
     public void setCount(int count1) {
         this.count = count1;
     }
 
-    public Date setDate(Date datearticle){
-        this.dateart=datearticle;
+    public Date setDate(Date datearticle) {
+        this.dateart = datearticle;
         return dateart;
     }
+
     public Date getDate() {
         return dateart;
     }
@@ -58,12 +61,12 @@ public class Article {
         this.authorId = authorId;
     }
 
-    public int getAdminApproverId() {
-        return adminApproverId;
+    public int getPublicationStatus() {
+        return publicationStatus;
     }
 
-    public void setAdminApproverId(int adminApproverId) {
-        this.adminApproverId = adminApproverId;
+    public void setPublicationStatus(int publicationStatus) {
+        this.publicationStatus = publicationStatus;
     }
 
 
@@ -71,16 +74,30 @@ public class Article {
         return "{" +
                 "\"id\":" + idart + ',' +
                 "\"title\":" + title + ',' +
-                "\"content\":" + content  + ',' +
-                "\"authorId\":" + authorId  + ',' +
-                "\"adminApproval\":" + adminApproverId +
+                "\"content\":" + content + ',' +
+                "\"authorId\":" + authorId + ',' +
+                "\"publicStat\":" + publicationStatus +
                 '}';
     }
-    public String toHTMLString(){
-        return "<div class='row' style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
-                "<h5>" + this.getTitle() + "</h5>" +
-                "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " + this.getAuthorId() +"</i></p>" +
-                "<p style='text-align: justify'>" + this.getContent() + "</p>" + "</div>";
+
+    public String toHTMLString() {
+        if (this.getPublicationStatus() == 0) {       //Non-published articles (for admin) has validate and delete button
+            return "<form onclick='/AdminArticleServlet' method='POST'>" +
+                    "<input type='submit' class='btn btn-success' style='float: right; margin: 1px' name='validate' value='Validate'/>" +
+                    "<input type='submit' class='btn btn-danger' style='float: right; margin: 1px' name='delete' value='Delete'/>" +
+                    "</form>" +
+                    "<div style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
+                    "<section><h5>" + this.getTitle() + "</h5>" +
+                    "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " +
+                    this.getAuthorId() + "</i></p><hr></section>" +
+                    "<section>" + this.getContent() + "</section>" + "</div>";
+        } else {    // Published article standard display
+            return "<div style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
+                    "<section><h5>" + this.getTitle() + "</h5>" +
+                    "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " +
+                    this.getAuthorId() + "</i></p><hr></section>" +
+                    "<section>" + this.getContent() + "</section>" + "</div>";
+        }
 
     }
 }

@@ -29,7 +29,7 @@ public class AddArticleServlet extends HttpServlet {
 
         // add authorId
         article.setAuthorId(user.getId());
-        article.setAdminApproverId(0);
+        article.setPublicationStatus(0);
 
         //send values to db
         ArticlesService.getInstance().addArticle(article);
