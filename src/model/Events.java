@@ -91,13 +91,30 @@ public class Events {
 
 
     public String toHTMLString(){
-        return  "<tr>" + "<th scope=\"row\">" + this.getId() + "</th>" +
-                "<td>" + this.getAuthorId() + "</td>" +
-                "<td>" + this.getAdminApproverId() + "</td>" +
-                "<td>" + this.getTitle() + "</td>" +
-                "<td>" + this.getStartDate() + "</td>" +
-                "<td>" + this.getEndDate() + "</td>" +
-                "<td>" + this.getContent() + "</td>" + "</tr>";
+        if(this.getAdminApproverId()==1)
+            return  "<tr>" +
+                    "<th scope=\"row\">" + this.getId() + "</th>" +
+                    "<td>" + this.getAuthorId() + "</td>" +
+                    "<td class='btn-secondary'>" + "ALREADY VIEWED" +"</td>" +
+                    "<td>" + this.getTitle() + "</td>" +
+                    "<td>" + this.getStartDate() + "</td>" +
+                    "<td>" + this.getEndDate() + "</td>" +
+                    "<td>" + this.getContent() + "</td>" +
+                    "<td>" + "<button type=\"button\" class=\"btn btn-warning\">Delete</button>\n" + "</td>" +
+                    "</tr>";
+        else
+            return  "<tr>" +
+                    "<th scope=\"row\">" + this.getId() + "</th>" +
+                    "<td>" + this.getAuthorId() + "</td>" +
+                    "<td class='btn-success'> NEW ! </td>" +
+                    "<td>" + this.getTitle() + "</td>" +
+                    "<td>" + this.getStartDate() + "</td>" +
+                    "<td>" + this.getEndDate() + "</td>" +
+                    "<td>" + this.getContent() + "</td>" +
+                    "<td>" + "<button type=\"button\" class=\"btn btn-warning\">Delete</button>\n" +
+                    "<button type=\"button\" class=\"btn btn-success\">Mark as viewed</button>" + "</td>" +
+                    "</tr>";
+
     }
 
     public String toString() {

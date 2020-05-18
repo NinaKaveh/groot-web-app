@@ -36,13 +36,14 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Event Id</th>
+                <th scope="col">Event ID</th>
                 <th scope="col">Author ID</th>
                 <th scope="col">Status</th>
                 <th scope="col">Title</th>
                 <th scope="col">Start date</th>
                 <th scope="col">End date</th>
                 <th scope="col">Content</th>
+                <th scope="col">ACTION</th>
             </tr>
             </thead>
             <tbody>
