@@ -15,6 +15,9 @@ public class Events {
     public int getId() {
         return id;
     }
+    public void setId(int id){
+        this.id= id;
+    }
 
     // DATE DEBUT
     public void setStartDate(String datedebut){
@@ -87,8 +90,16 @@ public class Events {
     }
 
 
+    public String toHTMLString(){
+        return  "<tr>" + "<th scope=\"row\">" + this.getId() + "</th>" +
+                "<td>" + this.getAuthorId() + "</td>" +
+                "<td>" + this.getAdminApproverId() + "</td>" +
+                "<td>" + this.getTitle() + "</td>" +
+                "<td>" + this.getStartDate() + "</td>" +
+                "<td>" + this.getEndDate() + "</td>" +
+                "<td>" + this.getContent() + "</td>" + "</tr>";
+    }
 
-    @Override
     public String toString() {
         return "Event{" +
                 "id=" + id +
