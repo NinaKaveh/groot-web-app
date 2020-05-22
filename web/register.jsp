@@ -37,6 +37,11 @@
                 <td><input type="password" name="password2"></td>
             </tr>
             <tr>
+                <th scope="row" colspan="2">By clicking on the register button, you accept the website term of use.
+                    <a href="termsofuse.jsp" style="color: #AAAAAA">Click here to consult them</a>
+                </th>
+            </tr>
+            <tr>
                 <th scope="row"></th>
                 <td><input type="submit" class="btn btn-primary" style="background-color: #111e84;" value="Register"></td>
                 <td></td>
