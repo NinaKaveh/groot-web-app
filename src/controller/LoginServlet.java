@@ -12,6 +12,9 @@ import java.io.IOException;
 @WebServlet(name = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+
         // Retrieve data from the login form
         String email=request.getParameter("email");
         String password=request.getParameter("password");

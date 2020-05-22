@@ -13,6 +13,9 @@ import java.io.IOException;
 @WebServlet(name = "/RegServlet")
 public class RegServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+
         // Retrieve data from the register form
         String pseudo = request.getParameter("pseudo");
         String email = request.getParameter("email");

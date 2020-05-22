@@ -15,6 +15,9 @@ import java.io.IOException;
 @WebServlet(name = "/AddArticleServlet")
 public class AddArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+
         // Retrieve data from the addarticle form
         String title = request.getParameter("title");
         String content = request.getParameter("content");

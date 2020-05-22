@@ -15,6 +15,8 @@ import java.io.PrintWriter;
 @WebServlet(name = "ScoreServlet")
 public class ScoreServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
 
         Users user = (Users) request.getSession().getAttribute("user");
         String pseudo = request.getParameter("pseudo");

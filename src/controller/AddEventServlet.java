@@ -15,6 +15,9 @@ import java.sql.Date;
 @WebServlet(name = "/AddEventServlet")
 public class AddEventServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+
         // Retrieve data from the addarticle form
         String title = request.getParameter("title");
         String datestart = request.getParameter("datestartform");
