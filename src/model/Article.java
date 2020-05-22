@@ -82,10 +82,8 @@ public class Article {
 
     public String toHTMLString() {
         if (this.getPublicationStatus() == 0) {       //Non-published articles (for admin) has validate and delete button
-            return "<form onclick='/AdminArticleServlet' method='POST'>" +
-                    "<input type='submit' class='btn btn-success' style='float: right; margin: 1px' name='validate' value='Validate'/>" +
-                    "<input type='submit' class='btn btn-danger' style='float: right; margin: 1px' name='delete' value='Delete'/>" +
-                    "</form>" +
+            return "<a class='btn btn-success' style='float: right; margin: 1px' href='/AdminArticleServlet?method=validate&id="+ this.getId() +"'>Validate</a>" +
+                    "<a class='btn btn-danger' style='float: right; margin: 1px' href='/AdminArticleServlet?method=delete&id="+ this.getId() +"'>Delete</a>"+
                     "<div style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
                     "<section><h5>" + this.getTitle() + "</h5>" +
                     "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " +

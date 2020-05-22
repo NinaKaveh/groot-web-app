@@ -23,14 +23,14 @@
         <h3>Welcome on your homepage</h3>
     </section>
 
-    <c:redirect url="AdminArticleServlet?action=doGet"/>
+    <c:redirect url="ArticleServlet?action=doGet"/>
 
     <div class="col-11" style="margin-top:40px;margin-left: 10px">
         <div style="padding: 0px 10px 0px 36px;">
             <h3 style="margin-bottom: 30px;">Latest articles created :</h3>
-            <p style="color: green"><c:out value="${editArticle}"></c:out></p>
 
-            <jsp:include page="/AdminArticleServlet"/>
+
+            <jsp:include page="/ArticleServlet"/>
             <c:out value="${message}"></c:out>
         </div>
 

@@ -14,33 +14,29 @@ import java.io.PrintWriter;
 @WebServlet(name = "/AdminArticleServlet")
 public class AdminArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("validate") != null) {
-
-            request.setAttribute("editArticle", "The article is officially published.");
-        } else if (request.getParameter("delete") != null) {
-
-            request.setAttribute("editArticle", "The article has been deleted.");
-        } else {
-            request.setAttribute("editArticle", "Tests message display.");
-
-        }
-        response.sendRedirect("admin/allarticles.jsp");
 
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        response.setContentType("text/html");
+        String method = request.getParameter("method");
+        String articleID = request.getParameter("id");
+        if (method != null) {
+            if (articleID != null) {
+                if (method.equals("validate")) {
+                    ArticlesService.getInstance().ValidateArticle(articleID);
+                    request.setAttribute("editArticle", "The article is officially published.");
+                    request.getRequestDispatcher("/admin/success.jsp").forward(request, response);
+                } else if (method.equals("delete")) {
+                    ArticlesService.getInstance().DeleteArticle(articleID);
+                    request.setAttribute("editArticle", "The article has been deleted.");
+                    request.getRequestDispatcher("/admin/success.jsp").forward(request, response);
+                } else System.out.println("Error");
+            } else System.out.println("Error");
+        } else {
+            request.setAttribute("editArticle", "No modification done");
+            request.getRequestDispatcher("/admin/adminHomePage.jsp").forward(request, response);
 
-        Users user = (Users) request.getSession().getAttribute("user");
-        ArticlesService provider = ArticlesService.getInstance();
-        try {
-            provider.AdminGetAll();
-            out.println(provider.toHtmlString());
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
     }
 }

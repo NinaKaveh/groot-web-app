@@ -16,16 +16,26 @@ public class ArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        PrintWriter out = res.getWriter();
-        res.setContentType("text/html");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
 
-        Users user = (Users) req.getSession().getAttribute("user");
+        Users user = (Users) request.getSession().getAttribute("user");
         ArticlesService provider = ArticlesService.getInstance();
 
 
         try {
-            provider.getAll();
+            if (user.getAdminStatus()==1){
+                String requestURL = request.getRequestURL().toString();
+                if (requestURL.equals("http://localhost:8080/admin/adminHomePage.jsp")){
+                    provider.AdminGetAll();
+                } else {
+                    provider.getAll();
+                }
+            } else {
+                provider.getAll();
+            }
             out.println(provider.toHtmlString());
         } catch (Exception e) {
             e.printStackTrace();

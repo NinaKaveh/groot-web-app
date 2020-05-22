@@ -70,6 +70,17 @@ public class ArticlesService {
         }
     }
 
+    public String toHtmlString() {
+        String htmlString = "";
+        int articlesCount = allArticles.size();
+        for (Article allArticle : allArticles) {
+            htmlString += allArticle.toHTMLString();
+        }
+        return htmlString;
+    }
+
+    /*---------------------------- Admin -------------------------------*/
+
     public ArrayList<Article> AdminGetAll() {
         allArticles.clear();
         if (this.allArticles.size() == 0) {
@@ -100,26 +111,27 @@ public class ArticlesService {
         }
     }
 
-    /*public String toJSONString() {
-        String stringifiedJSON = "[";
-        int articlesCount = allArticles.size();
-        for(int itr = 0; itr < articlesCount ; ++itr){
-            stringifiedJSON += allArticles.get(itr).toJsonString();
-            if(itr != articlesCount){
-                stringifiedJSON += ",";
-            }
+    public void DeleteArticle(String selectedID){
+        try {
+            Connection connection = ConnectJDBC.connectDB();
+            PreparedStatement prepStat = connection.prepareStatement("DELETE FROM articles WHERE articles.id =?");
+            prepStat.setString(1,selectedID);
+            prepStat.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        stringifiedJSON += "]";
-        return stringifiedJSON;
-    }*/
-
-    public String toHtmlString() {
-        String htmlString = "";
-        int articlesCount = allArticles.size();
-        for (Article allArticle : allArticles) {
-            htmlString += allArticle.toHTMLString();
-        }
-        return htmlString;
     }
+
+    public void ValidateArticle(String selectedID){
+        try {
+            Connection connection = ConnectJDBC.connectDB();
+            PreparedStatement prepStat = connection.prepareStatement("UPDATE articles SET isPublished='1' WHERE articles.id = ?");
+            prepStat.setString(1,selectedID);
+            prepStat.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
