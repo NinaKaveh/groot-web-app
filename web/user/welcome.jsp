@@ -1,3 +1,9 @@
+<%@ page import="model.Score" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Set" %>
+<%@ page import="services.ArticlesService" %>
+<%@ page import="model.Article" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -5,18 +11,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome on your account | Groot</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/global.css"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="../img/logo-groot.png">
 </head>
 
-<!-- INCLUDE HEADER -->
+<% Score.createPodium();%>
+<%Set<Map.Entry<String, Integer>> entrySet = Score.PODIUM.entrySet();%>
+
 <header>
     <%@ include file="/user/globalHeaderLogged.jsp" %>
 </header>
-<!-- END OF INCLUDE HEADER -->
 
 <body>
 
@@ -37,22 +45,29 @@
 
         <div class="row">
             <div class="col">
-               <h5>A wonderful party at ISEP</h5>
-                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was popularised...</p>
+                <h5>A wonderful party at ISEP</h5>
+                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was
+                    popularised...</p>
                 <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
             </div>
             <div class="col">
                 <h5>Sunset in Paris</h5>
-                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was popularised...</p>
+                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was
+                    popularised...</p>
                 <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
             </div>
             <div class="col">
                 <h5>Jardisep plants</h5>
-                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was popularised...</p>
+                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting
+                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was
+                    popularised...</p>
                 <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
             </div>
             <div class="col-2">
-                <a href="#" class="btn btn-primary" style="background-color: #111e84;">See more articles...</a>
+                <a href="/user/allarticles.jsp" class="btn btn-primary" style="background-color: #111e84;">See more
+                    articles...</a>
             </div>
         </div>
     </div>
@@ -60,13 +75,43 @@
         <button type="button" class="btn btn-light" style="background-color:#e0effd; width: 85%">
             My score: <span class="badge badge-success">${user.getScore()} points</span>
         </button>
-        <h5 style="margin-top:50px;">Events calendar:</h5>
+        <h5 style="margin-top:50px;">Top 3 users:</h5>
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <%
+                    int increment = 1;
+                        for (Map.Entry<String, Integer> rank : entrySet) {
+                            if (increment>3) break;       // Get only the first 3 users on the podium
+                %>
+                <th scope="row"><%=increment%>
+                </th>
+                <td><%=rank.getKey()%>
+                </td>
+                <td><%=rank.getValue()%>
+                </td>
+            </tr>
+            <%
+                    increment += 1;
+                        }
+
+            %>
+            </tbody>
+        </table>
+
     </div>
 </div>
 
 </body>
 
-
-<!-- INCLUDE FOOTER -->
-<%@ include file="/user/globalFooterLogged.html" %>
-<!-- DO NOT WRITE HERE -->
+<footer>
+    <%@ include file="/user/globalFooterLogged.html" %>
+</footer>
+</html>
