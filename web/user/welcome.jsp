@@ -21,6 +21,8 @@
 
 <% Score.createPodium();%>
 <%Set<Map.Entry<String, Integer>> entrySet = Score.PODIUM.entrySet();%>
+<%ArrayList<Article> allArticles = ArticlesService.getInstance().getAll(3);%>
+
 
 <header>
     <%@ include file="/user/globalHeaderLogged.jsp" %>
@@ -36,7 +38,7 @@
 </div>
 
 <div class="row">
-    <div class="col-8" style="padding: 0px 10px 0px 36px;">
+    <div class="col-8" style="padding: 0 10px 0 36px;">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">Latests publications</li>
@@ -44,27 +46,8 @@
         </nav>
 
         <div class="row">
-            <div class="col">
-                <h5>A wonderful party at ISEP</h5>
-                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was
-                    popularised...</p>
-                <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
-            </div>
-            <div class="col">
-                <h5>Sunset in Paris</h5>
-                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was
-                    popularised...</p>
-                <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
-            </div>
-            <div class="col">
-                <h5>Jardisep plants</h5>
-                <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s It was
-                    popularised...</p>
-                <a href="#" class="btn btn-primary" style="background-color: #111e84;">Read more...</a>
-            </div>
+                <% out.println(ArticlesService.getInstance().toHtmlString());%>
+
             <div class="col-2">
                 <a href="/user/allarticles.jsp" class="btn btn-primary" style="background-color: #111e84;">See more
                     articles...</a>
@@ -88,8 +71,8 @@
             <tr>
                 <%
                     int increment = 1;
-                        for (Map.Entry<String, Integer> rank : entrySet) {
-                            if (increment>3) break;       // Get only the first 3 users on the podium
+                    for (Map.Entry<String, Integer> rank : entrySet) {
+                        if (increment > 3) break;       // Get only the first 3 users on the podium
                 %>
                 <th scope="row"><%=increment%>
                 </th>
@@ -100,8 +83,7 @@
             </tr>
             <%
                     increment += 1;
-                        }
-
+                }
             %>
             </tbody>
         </table>

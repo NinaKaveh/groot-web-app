@@ -10,6 +10,16 @@ public class Article {
     private int publicationStatus;
     private Date dateart;
     private int count;
+    private String authorName;
+
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
 
     public int getId() {
         return idart;
@@ -87,13 +97,13 @@ public class Article {
                     "<div style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
                     "<section><h5>" + this.getTitle() + "</h5>" +
                     "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " +
-                    this.getAuthorId() + "</i></p><hr></section>" +
+                    this.getAuthorName() + "</i></p><hr></section>" +
                     "<section>" + this.getContent() + "</section>" + "</div>";
         } else {    // Published article standard display
-            return "<div style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
+            return "<div class='col-12' style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
                     "<section><h5>" + this.getTitle() + "</h5>" +
                     "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " +
-                    this.getAuthorId() + "</i></p><hr></section>" +
+                    this.getAuthorName() + "</i></p><hr></section>" +
                     "<section>" + this.getContent() + "</section>" + "</div>";
         }
 

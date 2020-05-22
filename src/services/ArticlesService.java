@@ -38,21 +38,29 @@ public class ArticlesService {
         }
     }
 
-    public ArrayList<Article> getAll() {
+    public ArrayList<Article> getAll(int limit) {
         allArticles.clear();
         if (this.allArticles.size() == 0) {
-            this.fetchAll();
+            this.fetchAll(limit);
         }
         return this.allArticles;
     }
 
-    public void fetchAll() {
+    public void fetchAll(int limit) {
         try {
             // Establish connection
             Connection connection = ConnectJDBC.connectDB();
-
+            String statement =
+                    "SELECT articles.id,articles.date,articles.title,articles.content,articles.authorId,articles.isPublished,users.pseudo " +
+                    "FROM articles,users " +
+                    "WHERE articles.authorId=users.id " +
+                    "AND isPublished=1 " +
+                    "ORDER by id DESC";
+            if (limit!=-1){
+                statement+= " LIMIT "+limit;
+            }
             //Recuperation articles
-            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM articles WHERE isPublished=1 ORDER by id DESC");
+            PreparedStatement prepStat = connection.prepareStatement(statement);
             ResultSet resultSet = prepStat.executeQuery();
             while (resultSet.next()) {
                 Article article = new Article();
@@ -62,6 +70,7 @@ public class ArticlesService {
                 article.setContent(resultSet.getString(4));
                 article.setAuthorId(resultSet.getInt(5));
                 article.setPublicationStatus(resultSet.getInt(6));
+                article.setAuthorName(resultSet.getString(7));
                 allArticles.add(article);
             }
 
@@ -81,19 +90,28 @@ public class ArticlesService {
 
     /*---------------------------- Admin -------------------------------*/
 
-    public ArrayList<Article> AdminGetAll() {
+    public ArrayList<Article> AdminGetAll(int limit) {
         allArticles.clear();
         if (this.allArticles.size() == 0) {
-            this.AdminfetchAll();
+            this.AdminfetchAll(limit);
         }
         return this.allArticles;
     }
 
-    public void AdminfetchAll() {
+    public void AdminfetchAll(int limit) {
         try {
             Connection connection = ConnectJDBC.connectDB();
+            String statement =
+                    "SELECT articles.id,articles.date,articles.title,articles.content,articles.authorId,articles.isPublished,users.pseudo " +
+                            "FROM articles,users " +
+                            "WHERE articles.authorId=users.id " +
+                            "AND isPublished=0 " +
+                            "ORDER by id DESC";
+            if (limit!=-1){
+                statement+= " LIMIT "+limit;
+            }
 
-            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM articles WHERE isPublished=0 ORDER by date DESC");
+            PreparedStatement prepStat = connection.prepareStatement(statement);
             ResultSet resultSet = prepStat.executeQuery();
             while (resultSet.next()) {
                 Article article = new Article();
@@ -103,6 +121,7 @@ public class ArticlesService {
                 article.setContent(resultSet.getString(4));
                 article.setAuthorId(resultSet.getInt(5));
                 article.setPublicationStatus(resultSet.getInt(6));
+                article.setAuthorName(resultSet.getString(7));
                 allArticles.add(article);
             }
 

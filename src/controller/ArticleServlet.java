@@ -29,12 +29,12 @@ public class ArticleServlet extends HttpServlet {
             if (user.getAdminStatus()==1){
                 String requestURL = request.getRequestURL().toString();
                 if (requestURL.equals("http://localhost:8080/admin/adminHomePage.jsp")){
-                    provider.AdminGetAll();
+                    provider.AdminGetAll(-1);
                 } else {
-                    provider.getAll();
+                    provider.getAll(-1);
                 }
             } else {
-                provider.getAll();
+                provider.getAll(-1);
             }
             out.println(provider.toHtmlString());
         } catch (Exception e) {
