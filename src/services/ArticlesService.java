@@ -52,7 +52,7 @@ public class ArticlesService {
             Connection connection = ConnectJDBC.connectDB();
 
             //Recuperation articles
-            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM articles ORDER by id DESC");
+            PreparedStatement prepStat = connection.prepareStatement("SELECT * FROM articles WHERE isPublished=1 ORDER by id DESC");
             ResultSet resultSet = prepStat.executeQuery();
             while (resultSet.next()) {
                 Article article = new Article();
