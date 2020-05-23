@@ -26,22 +26,35 @@ public class EventsService {
         return INSTANCE;
     }
 
-    /*public void addArticle(Article article) {
+    public void delEvent(Events event) {
         try {
             // Establish connection
             Connection connection = ConnectJDBC.connectDB();
 
             // Use of prepared statement to avoid security breach
-            PreparedStatement prepStat = connection.prepareStatement("INSERT INTO articles VALUES (NULL,CURDATE(),?,?,?,0)");
-            prepStat.setString(1, article.getTitle());
-            prepStat.setString(2, article.getContent());
-            prepStat.setInt(3, article.getAuthorId());
+            PreparedStatement prepStat = connection.prepareStatement("DELETE FROM events WHERE id = ?");
+            prepStat.setInt(1, event.getId());
             System.out.println(this);
             prepStat.executeUpdate();
         }  catch (SQLException e) {
             e.printStackTrace();
         }
-    }*/
+    }
+
+    public void markEvent(Events event) {
+        try {
+            // Establish connection
+            Connection connection = ConnectJDBC.connectDB();
+
+            // Use of prepared statement to avoid security breach
+            PreparedStatement prepStat = connection.prepareStatement("UPDATE events SET isPublished = '1' WHERE id = ?");
+            prepStat.setInt(1, event.getId());
+            System.out.println(this);
+            prepStat.executeUpdate();
+        }  catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     //First get all events
     public ArrayList<Events> getAll(){

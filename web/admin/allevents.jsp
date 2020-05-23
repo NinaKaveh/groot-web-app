@@ -33,6 +33,7 @@
     <div class="col-11" style="padding: 0px 10px 0px 36px;">
         <a onclick='refreshPage()' class="btn btn-warning" style="float: right" >Refresh this page</a>
         <h3 style="margin-bottom: 30px;">All events on Groot</h3>
+        <p style="color: green;">${message}</p>
         <table class="table">
             <thead>
             <tr>

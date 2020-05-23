@@ -96,4 +96,23 @@
         <url-pattern>/EventsServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>/MarkEventServlet</servlet-name>
+        <servlet-class>controller.MarkEventServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>/MarkEventServlet</servlet-name>
+        <url-pattern>/MarkEventServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>/DelEventServlet</servlet-name>
+        <servlet-class>controller.DelEventServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>/DelEventServlet</servlet-name>
+        <url-pattern>/DelEventServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
