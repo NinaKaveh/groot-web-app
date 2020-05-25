@@ -101,7 +101,7 @@ public class Events {
                     "<td>" + this.getEndDate() + "</td>" +
                     "<td>" + this.getContent() + "</td>" +
                     "<td>" +
-                    "<form method=\"post\" name=\"DelEvent\" action=\"/groot_web_app_war_exploded/DelEventServlet\">" +
+                    "<form method=\"post\" name=\"DelEvent\" action=\"/DelEventServlet\">" +
                     "<input type=\"text\" style=\"display:none\" name=\"input1\" value=\"" + this.getId()  + "\"> " +
                     "<button type=\"submit\" class=\"btn btn-warning\">Delete</button></form>" +
                     "</td>" +
@@ -116,10 +116,10 @@ public class Events {
                     "<td>" + this.getEndDate() + "</td>" +
                     "<td>" + this.getContent() + "</td>" +
                     "<td>" +
-                    "<form method=\"post\" name=\"DelEvent\" action=\"/groot_web_app_war_exploded/DelEventServlet\">" +
+                    "<form method=\"post\" name=\"DelEvent\" action=\"/DelEventServlet\">" +
                     "<input type=\"text\" style=\"display:none\" name=\"input1\" value=\"" + this.getId()  + "\"> " +
                     "<button type=\"submit\" class=\"btn btn-warning\">Delete</button></form>" +
-                    "<form method=\"post\" name=\"MarkEventViewed\" action=\"/groot_web_app_war_exploded/MarkEventServlet\">" +
+                    "<form method=\"post\" name=\"MarkEventViewed\" action=\"/MarkEventServlet\">" +
                     "<input type=\"text\" style=\"display:none\" name=\"input1\" value=\"" + this.getId()  + "\"> " +
                     "<button type=\"submit\" class=\"btn btn-success\">Mark as viewed</button></form>" +
                     "</td>" +

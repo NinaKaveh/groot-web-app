@@ -30,7 +30,7 @@ public class MarkEventServlet extends HttpServlet {
 
         // Redirect to allevents page
         request.setAttribute("message", "Well done !");
-        request.getRequestDispatcher("admin/allevents.jsp").forward(request, response);
+        response.sendRedirect("admin/allevents.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

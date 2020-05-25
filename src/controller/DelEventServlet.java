@@ -26,7 +26,7 @@ public class DelEventServlet extends HttpServlet {
 
         // Redirect to allevents page
         request.setAttribute("message", "This event has been deleted !");
-        request.getRequestDispatcher("admin/allevents.jsp").forward(request, response);
+        response.sendRedirect("admin/allevents.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
