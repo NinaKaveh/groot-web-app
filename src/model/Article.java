@@ -91,7 +91,8 @@ public class Article {
     }
 
     public String toHTMLString() {
-        if (this.getPublicationStatus() == 0) {       //Non-published articles (for admin) has validate and delete button
+        if (this.getPublicationStatus() == 0) {
+            //Non-published articles (for admin) has validate and delete button
             return "<a class='btn btn-success' style='float: right; margin: 1px' href='/AdminArticleServlet?method=validate&id="+ this.getId() +"'>Validate</a>" +
                     "<a class='btn btn-danger' style='float: right; margin: 1px' href='/AdminArticleServlet?method=delete&id="+ this.getId() +"'>Delete</a>"+
                     "<div style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
@@ -99,13 +100,23 @@ public class Article {
                     "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " +
                     this.getAuthorName() + "</i></p><hr></section>" +
                     "<section>" + this.getContent() + "</section>" + "</div>";
-        } else {    // Published article standard display
+        } else {
+            // Published article standard display
             return "<div class='col-12' style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
                     "<section><h5>" + this.getTitle() + "</h5>" +
                     "<p style='font-size: 12px; margin-left: 20px;'>" + "<i>Published on: " + this.getDate() + " by " +
                     this.getAuthorName() + "</i></p><hr></section>" +
                     "<section>" + this.getContent() + "</section>" + "</div>";
         }
-
     }
+
+    // Display all the user's articles with the publication status
+    public String userDisplay(){
+        return "<div class='col-12' style='border: solid 1px black; padding: 20px 30px 20px 30px; margin-bottom: 10px'>" +
+                "<section><h5>" + this.getTitle() + "</h5>" + "<h6><i>Status of the article : " + this.getPublicationStatus() + "*</h6>"+
+                "<p style='font-size: 12px; margin-left: 20px;'><i>Published on: " + this.getDate() + " by " +
+                this.getAuthorName() + "</i></p><hr></section>" +
+                "<section>" + this.getContent() + "</section>" + "</div>";
+    }
+
 }

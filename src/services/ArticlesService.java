@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class ArticlesService {
     private ArrayList<Article> allArticles = new ArrayList<Article>();
+    private ArrayList<Article> userArticles = new ArrayList<Article>();
     private static ArticlesService INSTANCE = null;
 
     private ArticlesService() {
@@ -38,29 +39,43 @@ public class ArticlesService {
         }
     }
 
-    public ArrayList<Article> getAll(int limit) {
+    public ArrayList<Article> getAll(int limit, boolean userProfile, int authorID) {
         allArticles.clear();
         if (this.allArticles.size() == 0) {
-            this.fetchAll(limit);
+            this.userFetchAll(limit, userProfile, authorID);
         }
         return this.allArticles;
     }
 
-    public void fetchAll(int limit) {
+    public void userFetchAll(int limit, boolean userProfile, int authorID) {
         try {
-            // Establish connection
             Connection connection = ConnectJDBC.connectDB();
-            String statement =
-                    "SELECT articles.id,articles.date,articles.title,articles.content,articles.authorId,articles.isPublished,users.pseudo " +
-                    "FROM articles,users " +
-                    "WHERE articles.authorId=users.id " +
-                    "AND isPublished=1 " +
-                    "ORDER by id DESC";
-            if (limit!=-1){
-                statement+= " LIMIT "+limit;
+            String statement;
+            PreparedStatement prepStat;
+            //Get only user's articles (published or not)
+            if (userProfile){
+                 statement =
+                         "SELECT articles.id,articles.date,articles.title,articles.content,articles.authorId,articles.isPublished,users.pseudo " +
+                                 "FROM articles,users " +
+                                 "WHERE articles.authorId=users.id " +
+                                 "AND users.id=? ";
+                prepStat = connection.prepareStatement(statement);
+                prepStat.setInt(1,authorID);
+
+            } else {
+                //Get all articles using value -1
+                statement =
+                        "SELECT articles.id,articles.date,articles.title,articles.content,articles.authorId,articles.isPublished,users.pseudo " +
+                                "FROM articles,users " +
+                                "WHERE articles.authorId=users.id " +
+                                "AND isPublished=1 " +
+                                "ORDER by id DESC";
+                if (limit != -1) {  // Set the number of articles to display
+                    statement += " LIMIT " + limit;
+                }
+                prepStat = connection.prepareStatement(statement);
             }
-            //Recuperation articles
-            PreparedStatement prepStat = connection.prepareStatement(statement);
+            //Get the articles
             ResultSet resultSet = prepStat.executeQuery();
             while (resultSet.next()) {
                 Article article = new Article();
@@ -79,26 +94,26 @@ public class ArticlesService {
         }
     }
 
-    public String toHtmlString() {
+    public String toHtmlString(boolean userProfile) {
         String htmlString = "";
-        int articlesCount = allArticles.size();
         for (Article allArticle : allArticles) {
-            htmlString += allArticle.toHTMLString();
+            if (userProfile) htmlString += allArticle.userDisplay();
+            else htmlString += allArticle.toHTMLString();
         }
         return htmlString;
     }
 
     /*---------------------------- Admin -------------------------------*/
 
-    public ArrayList<Article> AdminGetAll(int limit) {
+    public ArrayList<Article> AdminGetAllUnpublished() {
         allArticles.clear();
         if (this.allArticles.size() == 0) {
-            this.AdminfetchAll(limit);
+            this.adminFetchAll();
         }
         return this.allArticles;
     }
 
-    public void AdminfetchAll(int limit) {
+    public void adminFetchAll() {
         try {
             Connection connection = ConnectJDBC.connectDB();
             String statement =
@@ -107,9 +122,6 @@ public class ArticlesService {
                             "WHERE articles.authorId=users.id " +
                             "AND isPublished=0 " +
                             "ORDER by id DESC";
-            if (limit!=-1){
-                statement+= " LIMIT "+limit;
-            }
 
             PreparedStatement prepStat = connection.prepareStatement(statement);
             ResultSet resultSet = prepStat.executeQuery();
@@ -130,7 +142,7 @@ public class ArticlesService {
         }
     }
 
-    public void DeleteArticle(String selectedID){
+    public void deleteArticle(String selectedID){
         try {
             Connection connection = ConnectJDBC.connectDB();
             PreparedStatement prepStat = connection.prepareStatement("DELETE FROM articles WHERE articles.id =?");
@@ -141,7 +153,7 @@ public class ArticlesService {
         }
     }
 
-    public void ValidateArticle(String selectedID){
+    public void validateArticle(String selectedID){
         try {
             Connection connection = ConnectJDBC.connectDB();
             PreparedStatement prepStat = connection.prepareStatement("UPDATE articles SET isPublished='1' WHERE articles.id = ?");

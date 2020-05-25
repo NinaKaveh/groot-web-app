@@ -1,6 +1,5 @@
 package controller;
 
-import model.Users;
 import services.ArticlesService;
 
 import javax.servlet.ServletException;
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "/AdminArticleServlet")
 public class AdminArticleServlet extends HttpServlet {
@@ -24,11 +22,11 @@ public class AdminArticleServlet extends HttpServlet {
         if (method != null) {
             if (articleID != null) {
                 if (method.equals("validate")) {
-                    ArticlesService.getInstance().ValidateArticle(articleID);
+                    ArticlesService.getInstance().validateArticle(articleID);
                     request.setAttribute("editArticle", "The article is officially published.");
                     request.getRequestDispatcher("/admin/success.jsp").forward(request, response);
                 } else if (method.equals("delete")) {
-                    ArticlesService.getInstance().DeleteArticle(articleID);
+                    ArticlesService.getInstance().deleteArticle(articleID);
                     request.setAttribute("editArticle", "The article has been deleted.");
                     request.getRequestDispatcher("/admin/success.jsp").forward(request, response);
                 } else System.out.println("Error");

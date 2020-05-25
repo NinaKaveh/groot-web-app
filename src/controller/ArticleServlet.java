@@ -23,20 +23,26 @@ public class ArticleServlet extends HttpServlet {
 
         Users user = (Users) request.getSession().getAttribute("user");
         ArticlesService provider = ArticlesService.getInstance();
-
-
         try {
+            String requestURL = request.getRequestURL().toString();
             if (user.getAdminStatus()==1){
-                String requestURL = request.getRequestURL().toString();
                 if (requestURL.equals("http://localhost:8080/admin/adminHomePage.jsp")){
-                    provider.AdminGetAll(-1);
+                    provider.AdminGetAllUnpublished();
                 } else {
-                    provider.getAll(-1);
+                    provider.getAll(-1,false, user.getId());
                 }
+                out.println(provider.toHtmlString(false));
             } else {
-                provider.getAll(-1);
+                if (requestURL.equals("http://localhost:8080/user/profile.jsp")){
+                    provider.getAll(-1,true, user.getId());
+                    out.println(provider.toHtmlString(true));
+
+                } else {
+                    provider.getAll(-1,false, user.getId());
+                    out.println(provider.toHtmlString(false));
+
+                }
             }
-            out.println(provider.toHtmlString());
         } catch (Exception e) {
             e.printStackTrace();
         }

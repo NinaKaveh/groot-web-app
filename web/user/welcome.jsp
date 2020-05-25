@@ -19,14 +19,16 @@
     <link rel="icon" type="image/png" href="../img/logo-groot.png">
 </head>
 
-<% Score.createPodium();%>
-<%Set<Map.Entry<String, Integer>> entrySet = Score.PODIUM.entrySet();%>
-<%ArrayList<Article> allArticles = ArticlesService.getInstance().getAll(3);%>
-
 
 <header>
     <%@ include file="/user/globalHeaderLogged.jsp" %>
 </header>
+<%
+    Score.createPodium();
+    Set<Map.Entry<String, Integer>> entrySet = Score.PODIUM.entrySet();
+    Users user = (Users) request.getSession().getAttribute("user");
+    ArrayList<Article> allArticles = ArticlesService.getInstance().getAll(3,false,user.getId());
+%>
 
 <body>
 
@@ -46,7 +48,7 @@
         </nav>
 
         <div class="row">
-                <% out.println(ArticlesService.getInstance().toHtmlString());%>
+                <% out.println(ArticlesService.getInstance().toHtmlString(false));%>
 
             <div class="col-2">
                 <a href="/user/allarticles.jsp" class="btn btn-primary" style="background-color: #111e84;">See more
