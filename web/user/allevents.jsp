@@ -27,8 +27,7 @@
         <a href="addevent.jsp" class="btn btn-warning" style="float: right" >Propose an event</a>
         <h3 style="margin-bottom: 30px;">All incoming events</h3>
 
-        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%233F51B5&amp;ctz=Europe%2FParis&amp;src=cWk2amozZmQyMXVuc2oyZ2hrc2hoNnNndHNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%239E69AF&amp;showTitle=0&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=0&amp;mode=WEEK" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-
+        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%237986CB&amp;ctz=Europe%2FParis&amp;src=bTBhY2hrbWk0b2lkYmo4NzY1MWhtNnYyM2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%237CB342&amp;mode=WEEK" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 
     </div>
