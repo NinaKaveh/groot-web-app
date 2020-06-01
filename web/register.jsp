@@ -10,8 +10,10 @@
     <script type="text/javascript" src="js/formValidation.js"></script>
 </head>
 
+<header>
+    <%@ include file="/globalHeader.html" %>
+</header>
 <body>
-<%@ include file="/globalHeader.html" %>
 
 <section class="formtable">
     <h1>Create your account and join us!</h1>
@@ -52,7 +54,8 @@
     </form>
 </section>
 
-<%@ include file="/globalFooter.html" %>
-
 </body>
+<footer>
+    <%@ include file="/globalFooter.html" %>
+</footer>
 </html>

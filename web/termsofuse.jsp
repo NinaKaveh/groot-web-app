@@ -111,7 +111,7 @@
 
 </body>
 
-
-<!-- INCLUDE FOOTER -->
-<%@ include file="/globalFooter.html" %>
-<!-- DO NOT WRITE HERE -->
+<footer>
+    <%@ include file="/globalFooter.html" %>
+</footer>
+</html>

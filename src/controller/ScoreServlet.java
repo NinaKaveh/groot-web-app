@@ -23,8 +23,10 @@ public class ScoreServlet extends HttpServlet {
 
         Users searchUser = new Score().getUserScore(pseudo);
 
+        // get the pseudo and score of the user wanted
         request.setAttribute("searchPseudo", searchUser.getPseudo());
         request.setAttribute("searchScore", searchUser.getScore());
+        // redirect to the score page and display it
         if (user.getAdminStatus()==1){
             request.getRequestDispatcher("/admin/score.jsp").forward(request, response);
         } else {

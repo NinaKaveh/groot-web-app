@@ -67,5 +67,8 @@
 
 
 <!-- INCLUDE FOOTER -->
-<%@ include file="/user/globalFooterLogged.html" %>
+<footer>
+    <%@ include file="/user/globalFooterLogged.html" %>
+</footer>
 <!-- DO NOT WRITE HERE -->
+</html>

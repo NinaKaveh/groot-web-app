@@ -36,7 +36,8 @@
 
 </body>
 
+<footer>
+    <%@ include file="/user/globalFooterLogged.html" %>
+</footer>
 
-<!-- INCLUDE FOOTER -->
-<%@ include file="/user/globalFooterLogged.html" %>
-<!-- DO NOT WRITE HERE -->
+</html>

@@ -13,9 +13,12 @@
     <link rel="icon" type="image/png" href="../img/logo-groot.png">
 
 </head>
+<header>
+    <%@ include file="/admin/adminHeader.jsp" %>
+</header>
+
 
 <body>
-<%@ include file="/admin/adminHeader.jsp" %>
 <% Score.createPodium();%>
 <%Set<Map.Entry<String, Integer>> entrySet = Score.PODIUM.entrySet();%>
 
@@ -72,7 +75,10 @@
 
 </div>
 
-
-<%@ include file="/user/globalFooterLogged.html" %>
 </body>
+
+<footer>
+    <%@ include file="/user/globalFooterLogged.html" %>
+</footer>
+
 </html>

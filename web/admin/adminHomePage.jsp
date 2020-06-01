@@ -38,7 +38,6 @@
     </div>
 </main>
 
-<!-- include footer -->
 <footer>
     <%@ include file="../user/globalFooterLogged.html" %>
 </footer>

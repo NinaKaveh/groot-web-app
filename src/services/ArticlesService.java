@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class ArticlesService {
     private ArrayList<Article> allArticles = new ArrayList<Article>();
-    private ArrayList<Article> userArticles = new ArrayList<Article>();
     private static ArticlesService INSTANCE = null;
 
     private ArticlesService() {
@@ -53,7 +52,7 @@ public class ArticlesService {
             Connection connection = ConnectJDBC.connectDB();
             String statement;
             PreparedStatement prepStat;
-            //Get only user's articles (published or not)
+            // Get only user's articles (published or not)
             if (userProfile){
                  statement =
                          "SELECT articles.id,articles.date,articles.title,articles.content,articles.authorId,articles.isPublished,users.pseudo " +

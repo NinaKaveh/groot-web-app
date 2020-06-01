@@ -12,16 +12,17 @@ public class Score {
     public final static int COEF_ARTICLE = 5;
     public final static int COEF_EVENT = 10;
 
+    // Calculation of the user's score by counting both articles and events
     public static void addPoints(Users user) {
         try {
-            int scoreCount = 0;
+            int scoreCount = 0; // score of the user
             java.sql.Connection connection = ConnectJDBC.connectDB();
 
             // get the total number of articles for a user given
             PreparedStatement prepStatArticle = connection.prepareStatement("SELECT count(id) FROM articles WHERE authorId=? AND isPublished=1");
             prepStatArticle.setInt(1, user.getId());
 
-            // set the user score
+            // set the user score: add points for articles
             ResultSet resultSet = prepStatArticle.executeQuery();
             while (resultSet.next()) {
                 scoreCount = COEF_ARTICLE * resultSet.getInt(1);
@@ -31,13 +32,14 @@ public class Score {
             PreparedStatement prepStatEvent = connection.prepareStatement("SELECT count(id) FROM events WHERE authorId=? AND isPublished=1");
             prepStatEvent.setInt(1, user.getId());
 
-            // set the user score
+            // set the user score: add points for events
             resultSet = prepStatEvent.executeQuery();
             while (resultSet.next()) {
                 scoreCount += COEF_EVENT * resultSet.getInt(1);
             }
             user.setScore(scoreCount);
 
+            // update user's score
             PreparedStatement prepStatScore = connection.prepareStatement("UPDATE `users` SET `score`=? WHERE `id`=?");
             prepStatScore.setInt(1, user.getScore());
             prepStatScore.setInt(2, user.getId());
@@ -55,7 +57,7 @@ public class Score {
             // get the users scores in descending order
             PreparedStatement prepStat = connection.prepareStatement("SELECT pseudo,score FROM users WHERE adminStatus=0 ORDER BY `users`.`score` DESC");
             ResultSet resultSet = prepStat.executeQuery();
-            while (resultSet.next() && PODIUM.size()<10) {
+            while (resultSet.next() && PODIUM.size()<10) { // get the first 10 users
                 String pseudo = resultSet.getString(1);
                 int score = resultSet.getInt(2);
                 PODIUM.put(pseudo, score);

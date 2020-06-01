@@ -8,10 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script type="text/javascript" src="js/formValidation.js"></script>
 
-
 </head>
+<header>
+    <%@ include file="/globalHeader.html" %>
+</header>
 <body>
-<%@ include file="/globalHeader.html" %>
 
 <section class="formtable">
     <h1>Connect to your account!</h1>
@@ -42,8 +43,9 @@
     </form>
 </section>
 
-
-
-<%@ include file="/globalFooter.html" %>
 </body>
+
+<footer>
+    <%@ include file="/globalFooter.html" %>
+</footer>
 </html>

@@ -13,11 +13,11 @@
     <link rel="icon" type="image/png" href="../img/logo-groot.png">
 </head>
 
-<!-- INCLUDE HEADER -->
+
 <header>
     <%@ include file="adminHeader.jsp" %>
 </header>
-<!-- END OF INCLUDE HEADER -->
+
 <body>
 <c:redirect url="ArticleServlet?action=doGet"/>
 
@@ -32,7 +32,6 @@
 </div>
 </body>
 
-
-<!-- INCLUDE FOOTER -->
-<%@ include file="/user/globalFooterLogged.html" %>
-<!-- DO NOT WRITE HERE -->
+<footer>
+    <%@ include file="/user/globalFooterLogged.html" %>
+</footer>

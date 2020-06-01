@@ -19,11 +19,11 @@
     </script>
 </head>
 
-<!-- INCLUDE HEADER -->
+
 <header>
     <%@ include file="adminHeader.jsp" %>
 </header>
-<!-- END OF INCLUDE HEADER -->
+
 
 
 <body>
@@ -56,6 +56,6 @@
 </div>
 </body>
 
-<!-- INCLUDE FOOTER -->
+
 <%@ include file="/user/globalFooterLogged.html" %>
-<!-- DO NOT WRITE HERE -->
+

@@ -45,8 +45,8 @@
     </div>
 </div>
 
+</body>
 <footer>
     <%@ include file="/user/globalFooterLogged.html" %>
 </footer>
-</body>
 </html>
