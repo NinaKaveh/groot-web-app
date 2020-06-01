@@ -27,6 +27,7 @@ public class EventsService {
     }
 
     public void delEvent(Events event) {
+        // function to delete an event by admin
         try {
             // Establish connection
             Connection connection = ConnectJDBC.connectDB();
@@ -42,6 +43,7 @@ public class EventsService {
     }
 
     public void markEvent(Events event) {
+        // function to mark an event as read
         try {
             // Establish connection
             Connection connection = ConnectJDBC.connectDB();

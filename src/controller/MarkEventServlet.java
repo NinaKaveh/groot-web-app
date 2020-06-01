@@ -19,11 +19,11 @@ public class MarkEventServlet extends HttpServlet {
         String i = request.getParameter("input1");
         int id = Integer.parseInt(i);
         System.out.println(id);
-
+        //initiate event object
         Events event = new Events();
 
         event.setId(id);
-        event.setAdminApproverId(1);
+        event.setAdminApproverId(1); // tag admin approver id as 1
 
         //send values to db
         EventsService.getInstance().markEvent(event);

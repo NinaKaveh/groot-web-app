@@ -18,7 +18,7 @@ public class DelEventServlet extends HttpServlet {
         int id = Integer.parseInt(i);
 
         Events event = new Events();
-
+        //check event id to delete and add it to the object
         event.setId(id);
 
         //send values to db

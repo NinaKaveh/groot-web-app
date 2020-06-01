@@ -25,7 +25,7 @@
     <div class="col-4">
         <img src="../img/user.png" alt="groot logo" width="150" style="margin-left: 50%">
     </div>
-    <div class="col-8">
+    <div class="col-8"><!-- collect personal information for the connected user -->
         <h2>Your personal information :</h2>
         <p>Id : ${user.getId()}</p>
         <p>Pseudo : ${user.getPseudo()}</p>
@@ -39,7 +39,7 @@
         <p style="color: cadetblue">
             *The annotation is an indication on the publish status of the article : 1 means that the article is
             published and 0 means it is not.
-        </p>
+        </p><!-- display 3 last articles -->
         <jsp:include page="/ArticleServlet"/>
         <c:out value="${message}"></c:out>
     </div>

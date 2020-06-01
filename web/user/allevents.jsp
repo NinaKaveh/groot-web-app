@@ -21,7 +21,7 @@
 
 <body>
 
-
+<!-- Content start : intergate iframe for calendar-->
 <div class="row" style="margin-top:40px;margin-left: 10px">
     <div class="col-11" style="padding: 0px 10px 0px 36px;">
         <a href="addevent.jsp" class="btn btn-warning" style="float: right" >Propose an event</a>

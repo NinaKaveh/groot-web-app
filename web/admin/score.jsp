@@ -24,8 +24,7 @@
     <h2>You will find here the top 10 most active users of the Groot platform.</h2>
     <div class="col-4">
         <div class='row formtable' style="border: solid 1px black; margin-left: 2%">
-            <form id="searchForm" name="searchForm" class="input-group mb-3" method="POST"
-                  action="${pageContext.request.contextPath}/ScoreServlet">
+            <form id="searchForm" name="searchForm" class="input-group mb-3" method="POST" action="${pageContext.request.contextPath}/ScoreServlet"><!-- link to score servlet for searching users -->
                 <h4>Search a user to get his/her score</h4>
                 <input type="text" class="form-control" placeholder="Enter a pseudo" aria-label="Recipient's username"
                        aria-describedby="basic-addon2" name="pseudo">
@@ -33,11 +32,11 @@
             </form>
         </div>
         <div class='row' style="margin-left: 2%">
-            <h6>Pseudo : ${searchPseudo}</h6>
+            <h6>Pseudo : ${searchPseudo}</h6><!-- display pseudo searched -->
         </div>
 
         <div class='row' style="margin-left: 2%">
-            <h6>Score : ${searchScore}</h6>
+            <h6>Score : ${searchScore}</h6><!-- display associated score -->
         </div>
     </div>
 

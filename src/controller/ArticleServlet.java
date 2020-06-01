@@ -21,6 +21,7 @@ public class ArticleServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
 
+        //get sessions
         Users user = (Users) request.getSession().getAttribute("user");
         ArticlesService provider = ArticlesService.getInstance();
         try {

@@ -12,9 +12,9 @@ import java.io.IOException;
 @WebServlet(name = "LogoutServlet")
 public class LogoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(false); // destroy session
         if (session != null) {
-            session.removeAttribute("user");
+            session.removeAttribute("user"); //destroy arguments
             session.invalidate();
             request.setAttribute("message","You have logged out");
             request.getRequestDispatcher("login.jsp").forward(request, response);

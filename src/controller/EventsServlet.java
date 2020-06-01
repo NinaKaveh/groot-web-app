@@ -19,7 +19,7 @@ public class EventsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         PrintWriter out = res.getWriter();
         res.setContentType("text/html");
-
+        //call service to fetch all events
         EventsService provider = EventsService.getInstance();
         try {
             provider.getAll();

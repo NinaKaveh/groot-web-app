@@ -27,7 +27,7 @@
     <div class="col-11" style="padding: 0px 10px 0px 36px;">
         <a href="addarticle.jsp" class="btn btn-warning" style="float: right">Write an article</a>
         <h3 style="margin-bottom: 30px;">Latests publications</h3>
-
+        <!-- call last articles from database -->
         <jsp:include page="/ArticleServlet"/>
         <c:out value="${message }"></c:out>
     </div>

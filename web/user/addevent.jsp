@@ -28,7 +28,7 @@
             <div class="col">
             </div>
             <div class="col-8">
-                <form method="post" name="AddEventForm" action="${pageContext.request.contextPath}/AddEventServlet">
+                <form method="post" name="AddEventForm" action="${pageContext.request.contextPath}/AddEventServlet"><!-- form to add event -->
                     <p style="color: green;">${message}</p>
                     <div id="error"></div>
                     <div class="form-group">

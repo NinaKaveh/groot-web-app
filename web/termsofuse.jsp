@@ -31,7 +31,7 @@
         <img src="img/logo-groot.png" alt="groot logo" width="150" style="margin-left: 20%">
     </div>
     <div class="col-9">
-        <div style="text-align: justify">
+        <div style="text-align: justify"><!-- simple display of Groot terms -->
             <h2>Website Terms of Use</h2>
             <p>Version 1.0</p>
             <p>The Groot website located at www.groot.isep is a copyrighted work belonging to Groot By Iceland. Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.</p>

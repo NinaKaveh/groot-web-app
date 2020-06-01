@@ -40,6 +40,7 @@ public class ArticlesService {
     }
 
     public ArrayList<Article> getAll(int limit, boolean userProfile, int authorID) {
+        //this is to get all articles count from database
         allArticles.clear();
         if (this.allArticles.size() == 0) {
             this.userFetchAll(limit, userProfile, authorID);
@@ -77,6 +78,7 @@ public class ArticlesService {
             }
             //Get the articles
             ResultSet resultSet = prepStat.executeQuery();
+            // generate object article with every item of db
             while (resultSet.next()) {
                 Article article = new Article();
                 article.setId(resultSet.getInt(1));
@@ -95,6 +97,7 @@ public class ArticlesService {
     }
 
     public String toHtmlString(boolean userProfile) {
+       // this is to display articles in html for end page
         String htmlString = "";
         for (Article allArticle : allArticles) {
             if (userProfile) htmlString += allArticle.userDisplay();
@@ -106,6 +109,7 @@ public class ArticlesService {
     /*---------------------------- Admin -------------------------------*/
 
     public ArrayList<Article> AdminGetAllUnpublished() {
+        // collect all unpublished articles
         allArticles.clear();
         if (this.allArticles.size() == 0) {
             this.adminFetchAll();
@@ -114,6 +118,7 @@ public class ArticlesService {
     }
 
     public void adminFetchAll() {
+        // same as above, check if article is unpublished to collect it
         try {
             Connection connection = ConnectJDBC.connectDB();
             String statement =
@@ -143,6 +148,7 @@ public class ArticlesService {
     }
 
     public void deleteArticle(String selectedID){
+        // for deleting articles
         try {
             Connection connection = ConnectJDBC.connectDB();
             PreparedStatement prepStat = connection.prepareStatement("DELETE FROM articles WHERE articles.id =?");
@@ -154,6 +160,7 @@ public class ArticlesService {
     }
 
     public void validateArticle(String selectedID){
+        // when admin validate an article it goes here
         try {
             Connection connection = ConnectJDBC.connectDB();
             PreparedStatement prepStat = connection.prepareStatement("UPDATE articles SET isPublished='1' WHERE articles.id = ?");

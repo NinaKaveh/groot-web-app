@@ -16,6 +16,7 @@ public class AdminArticleServlet extends HttpServlet {
 
     }
 
+    // for validating articles by admin
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String method = request.getParameter("method");
         String articleID = request.getParameter("id");

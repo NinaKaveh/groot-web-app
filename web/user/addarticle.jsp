@@ -33,7 +33,7 @@
             <div class="col-8">
 
 
-                <form method="post" name="AddArticleForm" action="${pageContext.request.contextPath}/AddArticleServlet">
+                <form method="post" name="AddArticleForm" action="${pageContext.request.contextPath}/AddArticleServlet"><!-- initiate form to create a new article-->
                     <p style="color: green;">${message}</p>
 
                     <div id="error"></div>

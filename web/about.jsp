@@ -30,7 +30,7 @@
     <div class="col-4">
         <img src="img/logo-groot.png" alt="groot logo" width="150" style="margin-left: 50%">
     </div>
-    <div class="col-8">
+    <div class="col-8"><!-- description text -->
         <p align="">Groot is a participative platform. Users can view or share ecology-related articles and events.<br>
             Students and ISEP staff are able to follow the environmental news on this platform.<br>
             The information coming from ISEP members will be controlled by an administrator (every time you publish articles or events).<br>

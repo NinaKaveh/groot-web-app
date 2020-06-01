@@ -15,8 +15,9 @@
 
 <div class='row formtable' style="margin-left: 2%; text-align: center">
     <p style="color: green">${editArticle}</p>
-    <p><a href="${pageContext.request.contextPath}/admin/adminHomePage.jsp" style="color: #808080">Go back to the home
-        page</a></p>
+    <p>
+        <a href="${pageContext.request.contextPath}/admin/adminHomePage.jsp" style="color: #808080">Go back to the home page</a>
+    </p>
 </div>
 
 <%@ include file="/user/globalFooterLogged.html" %>

@@ -24,7 +24,7 @@
 <div class="row" style="margin-top:40px;margin-left: 10px">
     <div class="col-11" style="padding: 0px 10px 0px 36px;">
         <h3 style="margin-bottom: 30px;">Latests publications</h3>
-
+        <!-- call all articles from database by article servlet -->
         <jsp:include page="/ArticleServlet"/>
         <c:out value="${message}"></c:out>
     </div>

@@ -32,7 +32,7 @@
     <div class="col">
     </div>
     <div class="col-6">
-        <form>
+        <form><!-- contact form, link it with your email on working server -->
             <div class="form-group">
                 <label for="exampleFormControlInput1">Email address</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@isep.fr">

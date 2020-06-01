@@ -31,12 +31,12 @@
 
 <div class="row" style="margin-top:40px;margin-left: 10px">
     <div class="col-11" style="padding: 0px 10px 0px 36px;">
-        <a onclick='refreshPage()' class="btn btn-warning" style="float: right" >Refresh this page</a>
+        <a onclick='refreshPage()' class="btn btn-warning" style="float: right" >Refresh this page</a><!-- button to refresh-->
         <h3 style="margin-bottom: 30px;">All events on Groot</h3>
         <p style="color: green;">${message}</p>
         <table class="table">
             <thead>
-            <tr>
+            <tr><!-- creating headers for table-->
                 <th scope="col">Event ID</th>
                 <th scope="col">Author ID</th>
                 <th scope="col">Status</th>
@@ -47,7 +47,7 @@
                 <th scope="col">ACTION</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody><!-- generate table content with events from database -->
                 <jsp:include page="/EventsServlet" />
                 <c:out value="${message }"></c:out>
             </tbody>

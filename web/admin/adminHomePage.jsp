@@ -19,13 +19,14 @@
 
 <main>
     <section id="welcome">
-        <h1>Hi ${user.getPseudo()}!</h1>
+        <h1>Hi ${user.getPseudo()}!</h1><!-- check pseudo of user connected -->
         <h3>Welcome on your homepage</h3>
     </section>
-
+    <!-- call for article servlet-->
     <c:redirect url="ArticleServlet?action=doGet"/>
 
     <div class="col-11" style="margin-top:40px;margin-left: 10px">
+        <!-- Display last articles-->
         <div style="padding: 0px 10px 0px 36px;">
             <h3 style="margin-bottom: 30px;">Latest articles created :</h3>
 
@@ -37,6 +38,7 @@
     </div>
 </main>
 
+<!-- include footer -->
 <footer>
     <%@ include file="../user/globalFooterLogged.html" %>
 </footer>

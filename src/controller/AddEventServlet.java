@@ -28,9 +28,10 @@ public class AddEventServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("user");
 
-        //Debut ajout event
+        //Start add event
         Events event = new Events();
 
+        // give object parameters
         event.setTitle(title);
         event.setContent(content);
         event.setStartDate(datestart);

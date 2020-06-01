@@ -3,6 +3,7 @@ package model;
 import java.sql.*;
 
 public class Events {
+    // create objects
     private int id;
     private String title;
     private String content;
@@ -69,6 +70,7 @@ public class Events {
 
     // CLASS ADDEVENT
     public void addEvent() {
+        // used to add a new event to db
         try {
             // Establish connection
             Connection connection = ConnectJDBC.connectDB();
@@ -89,9 +91,10 @@ public class Events {
         }
     }
 
-
+    // for displaying events in admin table
     public String toHTMLString(){
         if(this.getAdminApproverId()==1)
+            // if event has been already marked
             return  "<tr>" +
                     "<th scope=\"row\">" + this.getId() + "</th>" +
                     "<td>" + this.getAuthorId() + "</td>" +
@@ -107,6 +110,7 @@ public class Events {
                     "</td>" +
                     "</tr>";
         else
+            // if the event is not marked :
             return  "<tr>" +
                     "<th scope=\"row\">" + this.getId() + "</th>" +
                     "<td>" + this.getAuthorId() + "</td>" +
@@ -127,6 +131,7 @@ public class Events {
 
     }
 
+    // display event to string
     public String toString() {
         return "Event{" +
                 "id=" + id +
